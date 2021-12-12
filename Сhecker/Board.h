@@ -21,6 +21,7 @@ public:
 				else all_squares[i - 1][j - 1].set_color(Color(51, 37, 22));
 				window.draw(all_squares[i - 1][j - 1].get_fon_active());
 			}
+
 		}
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {

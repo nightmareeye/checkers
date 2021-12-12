@@ -13,7 +13,7 @@ public:
 	CircleShape &get_checker() {
 		return this->checker;
 	}
-	Vector2f get_position() {
+	Vector2f check_position() { // =get_position
 		return this->checker.getPosition();
 	}
 	float get_x() {
@@ -28,10 +28,10 @@ public:
 	bool get_select() {
 		return this->choice; // =select
 	}
-	bool get_queen() {
+	bool get_superior() { // =get_queen
 		return this->superior; // =queen
 	}
-	//fedf
+	
 	void make_superior() { // =make_queen
 		this->superior = 1; // = queen
 	}
@@ -52,7 +52,7 @@ public:
 
 	Checker(float x_position, float y_position, bool color) {
 		this->checker.setOutlineThickness(3);
-		this->checker.setOutlineColor(sf::Color(0, 0, 0));
+		this->checker.setOutlineColor(Color(0, 0, 0));
 		this->checker_color = color;
 		if (color == 0) {
 			this->set_color(Color(180, 120, 55));
@@ -67,10 +67,10 @@ public:
 	void draw_checker(RenderWindow  &window) {
 		window.draw(this->checker);
 		if (superior == 1) { // =queen
-			this->texture.loadFromFile("Images//Queen.png");
+			this->texture.loadFromFile("Images//Superior.png");
 			this->sprite.setTexture(texture);
 			this->sprite.setTextureRect(IntRect(0, 0, 25, 25));
-			this->sprite.setPosition(this->get_position().x + 6, this->get_position().y + 6);
+			this->sprite.setPosition(this->check_position().x + 6, this->check_position().y + 6); // =get_position
 		}
 		window.draw(this->sprite);
 	}
@@ -87,7 +87,7 @@ public:
 		else if (checker.checker_color == 1) {
 			this->set_color(Color(37, 25, 13));
 		}
-		this->set_position(checker.get_position().x, checker.get_position().y);
+		this->set_position(checker.check_position().x, checker.check_position().y); // =get_position
 		return (*this);
 	}
 };
