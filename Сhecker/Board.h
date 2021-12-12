@@ -19,7 +19,7 @@ public:
 				all_squares[i - 1][j - 1].set_position(i * 80.0, j * 80);
 				if ((i + j) % 2 == 1) all_squares[i - 1][j - 1].set_color(Color(115, 95, 74));
 				else all_squares[i - 1][j - 1].set_color(Color(51, 37, 22));
-				window.draw(all_squares[i - 1][j - 1].get_fon_active());
+				window.draw(all_squares[i - 1][j - 1].get_cell());
 			}
 
 		}
