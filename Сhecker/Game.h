@@ -91,15 +91,9 @@ public:
 			if (event.key.code == Mouse::Right) {
 				if (checkers_on_board.get_checker(choise_chacker).check_select() == 1 && select_is_made == 1) { // =get_select
 					mouse_pos(window);
-<<<<<<< HEAD
 					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).get_fon_active()) {
 						checkers_on_board.get_board().get_all_squares(x, y).cell_free_0();
 						if (checkers_on_board.get_checker(choise_chacker).check_superior() == 1) { // =get_queen
-=======
-					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).get_fon_active()) {
-						checkers_on_board.get_board().get_all_squares(x, y).cell_free_0();
-						if (checkers_on_board.get_checker(choise_chacker).get_queen() == 1) {
->>>>>>> 739815c (func)
 							checkers_on_board.get_checker(choise_chacker).set_position(centre_on_square().x, centre_on_square().y);
 							if (queen_eat_checker()) {
 								x = (centre_on_square().x - 117) / 110;
