@@ -23,9 +23,9 @@ public:
 	Vector2i centre_on_square() {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (mouse_position.x < i * 50 + 100 && mouse_position.x < (i + 1) * 50 + 100 &&
-					mouse_position.y < j * 50 + 100 && mouse_position.y < (j + 1) * 50 + 100) {
-					return Vector2i(i * 50 + 57, j * 50 + 57);
+				if (mouse_position.x < i * 110 + 100 && mouse_position.x < (i + 1) * 110 + 100 &&
+					mouse_position.y < j * 110 + 100 && mouse_position.y < (j + 1) * 110 + 100) {
+					return Vector2i(i * 110 + 57, j * 110 + 57);
 				}
 			}
 		}
@@ -91,13 +91,13 @@ public:
 			if (event.key.code == Mouse::Right) {
 				if (checkers_on_board.get_checker(choise_chacker).get_select() == 1 && select_is_made == 1) {
 					mouse_pos(window);
-					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_fon_active()) {
-						checkers_on_board.get_board().get_all_squares(x, y).cell_free_0();
+					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).get_backlight()) {
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
 						if (checkers_on_board.get_checker(choise_chacker).get_queen() == 1) {
 							checkers_on_board.get_checker(choise_chacker).set_position(centre_on_square().x, centre_on_square().y);
 							if (queen_eat_checker()) {
-								x = (centre_on_square().x - 57) / 50;
-								y = (centre_on_square().y - 57) / 50;
+								x = (centre_on_square().x - 117) / 110;
+								y = (centre_on_square().y - 117) / 110;
 								checkers_on_board.delete_backlight();
 								if (queen_square_for_move(checkers_on_board.get_checker(choise_chacker).get_color(), 1, 1, 1, 1)) {
 									cout << "loop" << endl;
@@ -110,15 +110,15 @@ public:
 							make_queen();
 							if (eat_checker()) {
 								checkers_on_board.delete_backlight();
-								x = (centre_on_square().x - 57) / 50;
-								y = (centre_on_square().y - 57) / 50;
+								x = (centre_on_square().x - 117) / 110;
+								y = (centre_on_square().y - 117) / 110;
 								if (!chance_eat_checker(checkers_on_board.get_checker(choise_chacker).get_color())) {
 									cout << "loop" << endl;
 									return;
 								}
 							}
 						}
-						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).cell_free_1(checkers_on_board.get_checker(choise_chacker).get_color());
+						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).square_employment(checkers_on_board.get_checker(choise_chacker).get_color());
 						who_can_move = !who_can_move;
 						checkers_on_board.get_checker(choise_chacker).unselect();
 						select_is_made = 0;
@@ -216,8 +216,8 @@ public:
 		return more;
 	}
 	bool eat_checker() {//ем шашку
-		if ((centre_on_square().x - 57) / 50 - x == 2 || (centre_on_square().x - 57) / 50 - x == -2 &&
-			(centre_on_square().y - 57) / 50 - y == 2 || (centre_on_square().y - 57) / 50 - y == -2) {
+		if ((centre_on_square().x - 117) / 110 - x == 2 || (centre_on_square().x - 117) / 110 - x == -2 &&
+			(centre_on_square().y - 117) / 110 - y == 2 || (centre_on_square().y - 117) / 110 - y == -2) {
 			for (int i = 0; i < checkers_on_board.get_size(); i++) {
 				if (checkers_on_board.get_checker(i).get_x() == x + (checkers_on_board.get_checker(choise_chacker).get_x() - x) / 2 &&
 					checkers_on_board.get_checker(i).get_y() == y + (checkers_on_board.get_checker(choise_chacker).get_y() - y) / 2) {
@@ -239,12 +239,12 @@ public:
 	void make_queen() {
 		if (checkers_on_board.get_checker(choise_chacker).get_color() == 0) {
 			if (checkers_on_board.get_checker(choise_chacker).get_y() == 0) {
-				checkers_on_board.get_checker(choise_chacker).make_queen();
+				checkers_on_board.get_checker(choise_chacker).make_superior();
 			}
 		}
 		if (checkers_on_board.get_checker(choise_chacker).get_color() == 1) {
 			if (checkers_on_board.get_checker(choise_chacker).get_y() == 7) {
-				checkers_on_board.get_checker(choise_chacker).make_queen();
+				checkers_on_board.get_checker(choise_chacker).make_superior();
 			}
 		}
 	}
@@ -397,12 +397,12 @@ public:
 	bool queen_eat_checker() {//ем шашку
 		int x_eat = 0;
 		int y_eat = 0;
-		if ((centre_on_square().x - 57) / 50 - x >= 2 && (centre_on_square().y - 57) / 50 - y >= 2) {
+		if ((centre_on_square().x - 117) / 110 - x >= 2 && (centre_on_square().y - 117) / 110 - y >= 2) {
 			int i = x;
 			int j = y;
 			while (1) {
-				if (i < (centre_on_square().x - 57) / 50 - 1 && j < (centre_on_square().y - 57) / 50 - 1) {
-					if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_free() == 1) {
+				if (i < (centre_on_square().x - 117) / 110 - 1 && j < (centre_on_square().y - 117) / 110 - 1) {
+					if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_employment() == 1) {
 						x_eat = i + 1;
 						y_eat = j + 1;
 						break;
@@ -415,12 +415,12 @@ public:
 				else break;
 			}
 		}
-		if ((centre_on_square().x - 57) / 50 - x >= 2 && y - (centre_on_square().y - 57) / 50 >= 2) {
+		if ((centre_on_square().x - 117) / 110 - x >= 2 && y - (centre_on_square().y - 117) / 110 >= 2) {
 			int i = x;
 			int j = y;
 			while (1) {
-				if (i < (centre_on_square().x - 57) / 50 - 1 && j >(centre_on_square().y - 57) / 50 + 1) {
-					if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_free() == 1) {
+				if (i < (centre_on_square().x - 117) / 110 - 1 && j >(centre_on_square().y - 117) / 110 + 1) {
+					if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_employment() == 1) {
 						x_eat = i + 1;
 						y_eat = j - 1;
 						break;
@@ -433,12 +433,12 @@ public:
 				else break;
 			}
 		}
-		if (x - (centre_on_square().x - 57) / 50 >= 2 && (centre_on_square().y - 57) - y / 50 >= 2) {
+		if (x - (centre_on_square().x - 117) / 110 >= 2 && (centre_on_square().y - 117) - y / 110 >= 2) {
 			int i = x;
 			int j = y;
 			while (1) {
-				if (i > (centre_on_square().x - 57) / 50 + 1 && j < (centre_on_square().y - 57) / 50 - 1) {
-					if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_free() == 1) {
+				if (i > (centre_on_square().x - 117) / 110 + 1 && j < (centre_on_square().y - 117) / 110 - 1) {
+					if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_employment() == 1) {
 						x_eat = i - 1;
 						y_eat = j + 1;
 						break;
@@ -451,12 +451,12 @@ public:
 				else break;
 			}
 		}
-		if (x - (centre_on_square().x - 57) / 50 >= 2 && y - (centre_on_square().y - 57) / 50 >= 2) {
+		if (x - (centre_on_square().x - 117) / 110 >= 2 && y - (centre_on_square().y - 117) / 110 >= 2) {
 			int i = x;
 			int j = y;
 			while (1) {
-				if (i > (centre_on_square().x - 57) / 50 + 1 && j > (centre_on_square().y - 57) / 50 + 1) {
-					if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_free() == 1) {
+				if (i > (centre_on_square().x - 117) / 110 + 1 && j > (centre_on_square().y - 117) / 110 + 1) {
+					if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_employment() == 1) {
 						x_eat = i - 1;
 						y_eat = j - 1;
 						break;
@@ -522,7 +522,7 @@ public:
 	}
 	void error_choise_checker(RenderWindow &window, Event event) {
 		while (1) {
-			RectangleShape back = RectangleShape(Vector2f(170, 50));
+			RectangleShape back = RectangleShape(Vector2f(170, 110));
 			back.setFillColor(Color(245, 210, 175));
 			back.setPosition(165, 225);
 			Font font;

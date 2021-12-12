@@ -6,7 +6,7 @@ private:
 	bool fon_active = 0;// подцветка 0 если нет, 1 если есть = backlight
 	bool free = 0;// 0 для свободных, 1 для занятых = employment
 	bool checker_color;// 0 для белых, 1 для черных 
-	RectangleShape cell = RectangleShape(Vector2f(50, 50));//=square
+	RectangleShape cell = RectangleShape(Vector2f(80, 80));//=square
 public:
 	Square() { ; }
 
