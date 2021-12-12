@@ -7,7 +7,7 @@ private:
 	bool checker_color;// 0 для белых, 1 для черных
 	bool choice = 0;//1 если выбрана, 0 если нет =select
 	bool superior = 0;//1 если шашка дамка, 0 если нет =queen
-	Texture texture;//текстура значка дамки
+	Texture checker_texture;//текстура значка дамки =texture
 	Sprite sprite;//спрайт значка дамки
 public:
 	CircleShape &get_checker() {
@@ -45,7 +45,7 @@ public:
 		this->choice= 1; // =select
 	}
 	void unselect() {//отмена выбора фигуры
-		this->choice = 0; //=select
+		this->choice = 0; 
 	}
 
 	Checker() { }
@@ -67,8 +67,8 @@ public:
 	void draw_checker(RenderWindow  &window) {
 		window.draw(this->checker);
 		if (superior == 1) { // =queen
-			this->texture.loadFromFile("Images//Superior.png");
-			this->sprite.setTexture(texture);
+			this->checker_texture.loadFromFile("Images//Superior.png"); // =texture
+			this->sprite.setTexture(checker_texture); // =texture
 			this->sprite.setTextureRect(IntRect(0, 0, 25, 25));
 			this->sprite.setPosition(this->check_position().x + 6, this->check_position().y + 6); // =get_position
 		}
@@ -76,7 +76,7 @@ public:
 	}
 
 	Checker operator = (Checker checker) {
-		this->texture = checker.texture;
+		this->checker_texture = checker.checker_texture; // =get_position
 		this->sprite = checker.sprite;
 		this->choice = checker.choice; // =select
 		this->superior = checker.superior; //=queen
