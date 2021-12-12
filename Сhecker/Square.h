@@ -22,16 +22,16 @@ public:
 	bool get_checker_color() {
 		return this->checker_color;
 	}
-	void off_fon_active() {
+	void off_fon_active() {//=off_backlight
 		this->fon_active = 0;//=backlight
 	}
 	void on_fon_active() { //=on_backlight
 		this->fon_active = 1; //=backlight
 	}
-	void cell_free() {//=square_employment
+	void cell_free_0() {//=square_free
 		this->free = 0;//=employment
 	}
-	void cell_free(bool color) {//=square_employment
+		void cell_free_1(bool color) {//=square_employment
 		this->free = 1;//=employment
 		this->checker_color = color;
 	}

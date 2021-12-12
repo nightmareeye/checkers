@@ -91,8 +91,8 @@ public:
 			if (event.key.code == Mouse::Right) {
 				if (checkers_on_board.get_checker(choise_chacker).get_select() == 1 && select_is_made == 1) {
 					mouse_pos(window);
-					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_backlight()) {
-						checkers_on_board.get_board().get_all_squares(x, y).square_free();
+					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_fon_active()) {
+						checkers_on_board.get_board().get_all_squares(x, y).cell_free_0();
 						if (checkers_on_board.get_checker(choise_chacker).get_queen() == 1) {
 							checkers_on_board.get_checker(choise_chacker).set_position(centre_on_square().x, centre_on_square().y);
 							if (queen_eat_checker()) {
@@ -118,14 +118,14 @@ public:
 								}
 							}
 						}
-						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).square_employment(checkers_on_board.get_checker(choise_chacker).get_color());
+						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).cell_free_1(checkers_on_board.get_checker(choise_chacker).get_color());
 						who_can_move = !who_can_move;
 						checkers_on_board.get_checker(choise_chacker).unselect();
 						select_is_made = 0;
 						std::cout << "Drop" << endl;
 						for (int i = 0; i < 8; i++) {
 							for (int j = 0; j < 8; j++) {
-								cout << checkers_on_board.get_board().get_all_squares(j, i).get_employment();
+								cout << checkers_on_board.get_board().get_all_squares(j, i).get_free();
 							}
 							cout << endl;
 						}
@@ -143,26 +143,26 @@ public:
 
 	void square_for_move() {//варианты хода
 		if (checkers_on_board.get_checker(choise_chacker).get_color()) {
-			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 0) {
+			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_free() == 0) {
 				if (end_board(x + 1, y + 1)) {
-					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).on_backlight();
+					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).on_fon_active();
 				}
 			}
-			if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment() == 0) {
+			if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_free() == 0) {
 				if (end_board(x - 1, y + 1)) {
-					checkers_on_board.get_board().get_all_squares(x - 1, y + 1).on_backlight();
+					checkers_on_board.get_board().get_all_squares(x - 1, y + 1).on_fon_active();
 				}
 			}
 		}
 		else {
-			if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment() == 0) {
+			if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_free() == 0) {
 				if (end_board(x + 1, y - 1)) {
-					checkers_on_board.get_board().get_all_squares(x + 1, y - 1).on_backlight();
+					checkers_on_board.get_board().get_all_squares(x + 1, y - 1).on_fon_active();
 				}
 			}
-			if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment() == 0) {
+			if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_free() == 0) {
 				if (end_board(x - 1, y - 1)) {
-					checkers_on_board.get_board().get_all_squares(x - 1, y - 1).on_backlight();
+					checkers_on_board.get_board().get_all_squares(x - 1, y - 1).on_fon_active();
 				}
 			}
 		}
@@ -173,41 +173,41 @@ public:
 	}
 	bool chance_eat_checker(bool color) {//варианты съесть шашку
 		bool more = 1;
-		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment()) {
+		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_free()) {
 			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != color) {
-				if (checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0) {
+				if (checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_free() == 0) {
 					if (end_board(x + 2, y + 2)) {
-						checkers_on_board.get_board().get_all_squares(x + 2, y + 2).on_backlight();
+						checkers_on_board.get_board().get_all_squares(x + 2, y + 2).on_fon_active();
 						more = 0;
 					}
 				}
 			}
 		}
-		if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment()) {
+		if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_free()) {
 			if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != color) {
-				if (checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0) {
+				if (checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_free() == 0) {
 					if (end_board(x - 2, y + 2)) {
-						checkers_on_board.get_board().get_all_squares(x - 2, y + 2).on_backlight();
+						checkers_on_board.get_board().get_all_squares(x - 2, y + 2).on_fon_active();
 						more = 0;
 					}
 				}
 			}
 		}
-		if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment()) {
+		if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_free()) {
 			if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != color) {
-				if (checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0) {
+				if (checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_free() == 0) {
 					if (end_board(x + 2, y - 2)) {
-						checkers_on_board.get_board().get_all_squares(x + 2, y - 2).on_backlight();
+						checkers_on_board.get_board().get_all_squares(x + 2, y - 2).on_fon_active();
 						more = 0;
 					}
 				}
 			}
 		}
-		if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment()) {
+		if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_free()) {
 			if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != color) {
-				if (checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0) {
+				if (checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_free() == 0) {
 					if (end_board(x - 2, y - 2)) {
-						checkers_on_board.get_board().get_all_squares(x - 2, y - 2).on_backlight();
+						checkers_on_board.get_board().get_all_squares(x - 2, y - 2).on_fon_active();
 						more = 0;
 					}
 				}
@@ -221,7 +221,7 @@ public:
 			for (int i = 0; i < checkers_on_board.get_size(); i++) {
 				if (checkers_on_board.get_checker(i).get_x() == x + (checkers_on_board.get_checker(choise_chacker).get_x() - x) / 2 &&
 					checkers_on_board.get_checker(i).get_y() == y + (checkers_on_board.get_checker(choise_chacker).get_y() - y) / 2) {
-					checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(i).get_x(), checkers_on_board.get_checker(i).get_y()).square_free();
+					checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(i).get_x(), checkers_on_board.get_checker(i).get_y()).cell_free_0();
 					for (int j = i; j < checkers_on_board.get_size() - 1; j++) {
 						checkers_on_board.get_checker(j) = checkers_on_board.get_checker(j + 1);
 					}
@@ -258,14 +258,14 @@ public:
 			can_eat[0] = 0;
 			while (1) {
 				if (end_board(x_queen + 1, y_queen + 1)) {
-					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_free() == 1) {
 						if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_checker_color() == color) {
 							break;
 						}
 						else if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_checker_color() != color) {
 							if (end_board(x_queen + 2, y_queen + 2)) {
-								if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).get_employment() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).on_backlight();
+								if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).get_free() == 0) {
+									checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).on_fon_activet();
 									x_queen = x_queen + 2;
 									y_queen = y_queen + 2;
 									must_eat++;
@@ -277,7 +277,7 @@ public:
 						}
 					}
 					else {
-						checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).on_backlight();
+						checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).on_fon_active();
 						x_queen = x_queen + 1;
 						y_queen = y_queen + 1;
 					}
@@ -291,14 +291,14 @@ public:
 			y_queen = y;
 			while (1) {
 				if (end_board(x_queen - 1, y_queen + 1)) {
-					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_free() == 1) {
 						if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_checker_color() == color) {
 							break;
 						}
 						else if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_checker_color() != color) {
 							if (end_board(x_queen - 2, y_queen + 2)) {
-								if (checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen + 2).get_employment() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen + 2).on_backlight();
+								if (checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen + 2).get_free() == 0) {
+									checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen + 2).on_fon_active();
 									x_queen = x_queen - 2;
 									y_queen = y_queen + 2;
 									must_eat++;
@@ -310,7 +310,7 @@ public:
 						}
 					}
 					else {
-						checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).on_backlight();
+						checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).on_fon_active();
 						x_queen = x_queen - 1;
 						y_queen = y_queen + 1;
 					}
@@ -324,14 +324,14 @@ public:
 			y_queen = y;
 			while (1) {
 				if (end_board(x_queen + 1, y_queen - 1)) {
-					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_free() == 1) {
 						if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_checker_color() == color) {
 							break;
 						}
 						else if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_checker_color() != color) {
 							if (end_board(x_queen + 2, y_queen - 2)) {
-								if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen - 2).get_employment() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen - 2).on_backlight();
+								if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen - 2).get_free() == 0) {
+									checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen - 2).on_fon_active();
 									x_queen = x_queen + 2;
 									y_queen = y_queen - 2;
 									must_eat++;
@@ -343,7 +343,7 @@ public:
 						}
 					}
 					else {
-						checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).on_backlight();
+						checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).on_fon_active();
 						x_queen = x_queen + 1;
 						y_queen = y_queen - 1;
 					}
@@ -357,14 +357,14 @@ public:
 			y_queen = y;
 			while (1) {
 				if (end_board(x_queen - 1, y_queen - 1)) {
-					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_free() == 1) {
 						if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_checker_color() == color) {
 							break;
 						}
 						else if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_checker_color() != color) {
 							if (end_board(x_queen - 2, y_queen - 2)) {
-								if (checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen - 2).get_employment() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen - 2).on_backlight();
+								if (checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen - 2).get_free() == 0) {
+									checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen - 2).on_fon_active();
 									x_queen = x_queen - 2;
 									y_queen = y_queen - 2;
 									must_eat++;
@@ -376,7 +376,7 @@ public:
 						}
 					}
 					else {
-						checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).on_backlight();
+						checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).on_fon_active();
 						x_queen = x_queen - 1;
 						y_queen = y_queen - 1;
 					}
@@ -402,7 +402,7 @@ public:
 			int j = y;
 			while (1) {
 				if (i < (centre_on_square().x - 57) / 50 - 1 && j < (centre_on_square().y - 57) / 50 - 1) {
-					if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_free() == 1) {
 						x_eat = i + 1;
 						y_eat = j + 1;
 						break;
@@ -420,7 +420,7 @@ public:
 			int j = y;
 			while (1) {
 				if (i < (centre_on_square().x - 57) / 50 - 1 && j >(centre_on_square().y - 57) / 50 + 1) {
-					if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_free() == 1) {
 						x_eat = i + 1;
 						y_eat = j - 1;
 						break;
@@ -438,7 +438,7 @@ public:
 			int j = y;
 			while (1) {
 				if (i > (centre_on_square().x - 57) / 50 + 1 && j < (centre_on_square().y - 57) / 50 - 1) {
-					if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_free() == 1) {
 						x_eat = i - 1;
 						y_eat = j + 1;
 						break;
@@ -456,7 +456,7 @@ public:
 			int j = y;
 			while (1) {
 				if (i > (centre_on_square().x - 57) / 50 + 1 && j > (centre_on_square().y - 57) / 50 + 1) {
-					if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_free() == 1) {
 						x_eat = i - 1;
 						y_eat = j - 1;
 						break;
@@ -472,7 +472,7 @@ public:
 
 		for (int f = 0; f < checkers_on_board.get_size(); f++) {
 			if (checkers_on_board.get_checker(f).get_x() == x_eat && checkers_on_board.get_checker(f).get_y() == y_eat) {
-				checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(f).get_x(), checkers_on_board.get_checker(f).get_y()).square_free();
+				checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(f).get_x(), checkers_on_board.get_checker(f).get_y()).cell_free_0();
 
 				for (int c = f; c < checkers_on_board.get_size() - 1; c++) {
 					checkers_on_board.get_checker(c) = checkers_on_board.get_checker(c + 1);
