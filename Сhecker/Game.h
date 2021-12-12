@@ -239,12 +239,12 @@ public:
 	void make_queen() {
 		if (checkers_on_board.get_checker(choise_chacker).get_color() == 0) {
 			if (checkers_on_board.get_checker(choise_chacker).get_y() == 0) {
-				checkers_on_board.get_checker(choise_chacker).make_queen();
+				checkers_on_board.get_checker(choise_chacker).make_superior();
 			}
 		}
 		if (checkers_on_board.get_checker(choise_chacker).get_color() == 1) {
 			if (checkers_on_board.get_checker(choise_chacker).get_y() == 7) {
-				checkers_on_board.get_checker(choise_chacker).make_queen();
+				checkers_on_board.get_checker(choise_chacker).make_superior();
 			}
 		}
 	}
