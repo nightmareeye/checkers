@@ -10,31 +10,30 @@ private:
 public:
 	Square() { ; }
 
-	RectangleShape &get_square() {
+	RectangleShape &get_cell() { //=get_square
 		return this->cell;//=square
 	}
-	bool get_backlight() {
+	bool get_fon_active() { //=get_backlight
 		return this->fon_active; //=backlight
 	}
-	bool get_employment() {
+	bool get_free() { //=get_employment
 		return this->free;//=employment
 	}
 	bool get_checker_color() {
 		return this->checker_color;
 	}
-
-	void on_backlight() {
-		this->fon_active = 1; //=backlight
-	}
-	void off_backlight() {
+	void off_fon_active() {
 		this->fon_active = 0;//=backlight
 	}
-	void square_employment(bool color) {
+	void on_fon_active() { //=on_backlight
+		this->fon_active = 1; //=backlight
+	}
+	void cell_free() {//=square_employment
+		this->free = 0;//=employment
+	}
+	void cell_free(bool color) {//=square_employment
 		this->free = 1;//=employment
 		this->checker_color = color;
-	}
-	void square_free() {
-		this->free = 0;//=employment
 	}
 	void set_color(Color color) {
 		this->cell.setFillColor(color); //=square
