@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace sf; // класс
 using namespace std; //биюлиотека
-
+//leha hi
 class Board {
 private:
 	Square all_squares[8][8];
