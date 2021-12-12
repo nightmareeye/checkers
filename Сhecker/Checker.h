@@ -31,7 +31,7 @@ public:
 	bool get_queen() {
 		return this->superior; // =queen
 	}
-
+	//fedf
 	void make_superior() { // =make_queen
 		this->superior = 1; // = queen
 	}
