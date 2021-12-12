@@ -265,7 +265,7 @@ public:
 						else if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_checker_color() != color) {
 							if (end_board(x_queen + 2, y_queen + 2)) {
 								if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).get_free() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).on_fon_activet();
+									checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).on_fon_active();
 									x_queen = x_queen + 2;
 									y_queen = y_queen + 2;
 									must_eat++;
