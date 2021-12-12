@@ -3,7 +3,7 @@ using namespace sf;
 
 class Checker {
 private:
-	CircleShape checker = CircleShape(20);
+	CircleShape checker = CircleShape(35);
 	bool checker_color;// 0 для белых, 1 для черных
 	bool choice = 0;//1 если выбрана, 0 если нет =select
 	bool superior = 0;//1 если шашка дамка, 0 если нет =queen
@@ -17,10 +17,10 @@ public:
 		return this->checker.getPosition();
 	}
 	float get_x() {
-		return (this->check_position().x - 57) / 50; // =get_position
+		return (this->get_position().x - 117) / 110;
 	}
 	float get_y() {
-		return (this->check_position().y - 57) / 50; // =get_position
+		return (this->get_position().y - 117) / 110;
 	}
 	bool get_color() {
 		return this->checker_color;
@@ -82,10 +82,10 @@ public:
 		this->superior = checker.superior; //=queen
 		this->checker_color = checker.checker_color;
 		if (checker.checker_color == 0) {
-			this->set_color(Color(180, 120, 55));
+			this->set_color(Color(131, 107, 83));
 		}
 		else if (checker.checker_color == 1) {
-			this->set_color(Color(61, 25, 7));
+			this->set_color(Color(37, 25, 13));
 		}
 		this->set_position(checker.check_position().x, checker.check_position().y); // =get_position
 		return (*this);

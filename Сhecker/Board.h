@@ -2,8 +2,8 @@
 #include "Square.h"
 #include <iostream>
 using namespace sf; // класс
-using namespace std; //биюлиотека
-//leha hi
+using namespace std; //библиотека
+
 class Board {
 private:
 	Square all_squares[8][8];
@@ -16,23 +16,23 @@ public:
 	void draw_board(RenderWindow &window) {
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {
-				all_squares[i - 1][j - 1].set_position(i * 50.0, j * 50);
-				if ((i + j) % 2 == 1) all_squares[i - 1][j - 1].set_color(Color(255, 178, 115));
-				else all_squares[i - 1][j - 1].set_color(Color(101, 61, 16));
-				window.draw(all_squares[i - 1][j - 1].get_square());
+				all_squares[i - 1][j - 1].set_position(i * 80.0, j * 80);
+				if ((i + j) % 2 == 1) all_squares[i - 1][j - 1].set_color(Color(115, 95, 74));
+				else all_squares[i - 1][j - 1].set_color(Color(51, 37, 22));
+				window.draw(all_squares[i - 1][j - 1].get_fon_active());
 			}
 		}
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {
-				if (all_squares[i - 1][j - 1].get_backlight() == 1) {
+				if (all_squares[i - 1][j - 1].get_fon_active() == 1) {
 					RectangleShape square_light(Vector2f(50, 50));
 					square_light.setPosition(i * 50, j * 50);
 					all_squares[i - 1][j - 1].set_color(Color(150, 120, 90));
 				}
-				window.draw(all_squares[i - 1][j - 1].get_square());
+				window.draw(all_squares[i - 1][j - 1].get_cell());
 			}
 		}
-		Font font;
+		/*Font font;
 		font.loadFromFile("Font//bahnschrift.ttf");
 		Text *t[16];
 		for (int i = 0; i < 16; i++) {
@@ -68,6 +68,6 @@ public:
 			window.draw(*t[i]);
 			t[i]->setPosition((i - 8) * 50 + 60, 455);
 			window.draw(*t[i]);
-		}
+		}*/
 	}
 };

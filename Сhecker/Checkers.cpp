@@ -7,7 +7,7 @@ int main() {
 	setlocale(LC_ALL, "rus");
 	Game game;
 	bool start = 1;
-	RenderWindow window(VideoMode(1920, 900), "Checker");
+	RenderWindow window(VideoMode(800, 800), "Checker");
 	while (window.isOpen()) {
 		Event event; 
 		while (window.pollEvent(event)) {
