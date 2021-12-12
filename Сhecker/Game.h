@@ -37,7 +37,7 @@ public:
 				mouse_pos(window);
 				if (event.type == sf::Event::MouseButtonPressed) {//для отмены взятия фигуры
 					if (event.key.code == Mouse::Left) {
-						if (checkers_on_board.get_checker(choise_chacker).get_select() == 1 && select_is_made == 1) {
+						if (checkers_on_board.get_checker(choise_chacker).check_select() == 1 && select_is_made == 1) { // =get_select
 							checkers_on_board.get_checker(choise_chacker).unselect(); // Smenil unselect
 							select_is_made = 0;
 							std::cout << "Drop" << endl;
@@ -47,11 +47,11 @@ public:
 					}
 				}
 				for (int i = 0; i < checkers_on_board.get_size(); i++) {
-					if (this->mouse_position.x >= checkers_on_board.get_checker(i).get_position().x - 7 &&
-						this->mouse_position.x <= checkers_on_board.get_checker(i).get_position().x + 43 &&
-						this->mouse_position.y >= checkers_on_board.get_checker(i).get_position().y - 7 &&
-						this->mouse_position.y <= checkers_on_board.get_checker(i).get_position().y + 43) {
-						if (checkers_on_board.get_checker(i).get_select() == 0 && select_is_made == 0) {
+					if (this->mouse_position.x >= checkers_on_board.get_checker(i).check_position().x - 7 && // =get_position
+						this->mouse_position.x <= checkers_on_board.get_checker(i).check_position().x + 43 && // =get_position 
+						this->mouse_position.y >= checkers_on_board.get_checker(i).check_position().y - 7 && // =get_position
+						this->mouse_position.y <= checkers_on_board.get_checker(i).check_position().y + 43) { // =get_position
+						if (checkers_on_board.get_checker(i).check_select() == 0 && select_is_made == 0) { // =get_select
 							if (checkers_on_board.get_checker(i).get_color() == who_can_move) {
 								if (if_you_can_eat_you_must_eat(checkers_on_board.get_checker(i).get_color())) {
 									int s = 0;
@@ -72,7 +72,7 @@ public:
 								std::cout << "Take" << endl;
 								x = checkers_on_board.get_checker(choise_chacker).get_x();
 								y = checkers_on_board.get_checker(choise_chacker).get_y();
-								if (checkers_on_board.get_checker(choise_chacker).get_queen()) {
+								if (checkers_on_board.get_checker(choise_chacker).check_superior()) { // =get_queen
 									queen_square_for_move(checkers_on_board.get_checker(choise_chacker).get_color(), 1, 1, 1, 1);
 								}
 								else {
@@ -89,11 +89,11 @@ public:
 	void hod(RenderWindow &window, Event event) {//ход шашки // Smenil nazvanie funcii
 		if (event.type == sf::Event::MouseButtonPressed) {
 			if (event.key.code == Mouse::Right) {
-				if (checkers_on_board.get_checker(choise_chacker).get_select() == 1 && select_is_made == 1) {
+				if (checkers_on_board.get_checker(choise_chacker).check_select() == 1 && select_is_made == 1) { // =get_select
 					mouse_pos(window);
 					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).get_backlight()) {
 						checkers_on_board.get_board().get_all_squares(x, y).square_free();
-						if (checkers_on_board.get_checker(choise_chacker).get_queen() == 1) {
+						if (checkers_on_board.get_checker(choise_chacker).check_superior() == 1) { // =get_queen
 							checkers_on_board.get_checker(choise_chacker).set_position(centre_on_square().x, centre_on_square().y);
 							if (queen_eat_checker()) {
 								x = (centre_on_square().x - 117) / 110;
@@ -500,14 +500,14 @@ public:
 		}
 		for (int i = 0; i < checkers_on_board.get_size(); i++) {
 			if (checkers_on_board.get_checker(i).get_color() == color) {
-				if (checkers_on_board.get_checker(i).get_queen() == 0) {
+				if (checkers_on_board.get_checker(i).check_superior() == 0) {  // =get_queen
 					x = checkers_on_board.get_checker(i).get_x();
 					y = checkers_on_board.get_checker(i).get_y();
 					if (!chance_eat_checker(color)) {
 						who_must_eat.push_back(i);
 					}
 				}
-				if (checkers_on_board.get_checker(i).get_queen() == 1) {
+				if (checkers_on_board.get_checker(i).check_superior() == 1) { // =get_queen
 					x = checkers_on_board.get_checker(i).get_x();
 					y = checkers_on_board.get_checker(i).get_y();
 					if (queen_square_for_move(color, 1, 1, 1, 1)) {
