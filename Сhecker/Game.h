@@ -86,13 +86,13 @@ public:
 			}
 		}
 	}
-	void hod(RenderWindow &window, Event event) {//ход шашки // Smenil nazvanie funcii
+	void hod(RenderWindow &window, Event event) {//ход шашки // Smenil nazvanie funciiget_fon_active
 		if (event.type == sf::Event::MouseButtonPressed) {
 			if (event.key.code == Mouse::Right) {
 				if (checkers_on_board.get_checker(choise_chacker).get_select() == 1 && select_is_made == 1) {
 					mouse_pos(window);
-					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).get_backlight()) {
-						checkers_on_board.get_board().get_all_squares(x, y).square_free();
+					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).get_fon_active()) {
+						checkers_on_board.get_board().get_all_squares(x, y).cell_free_0();
 						if (checkers_on_board.get_checker(choise_chacker).get_queen() == 1) {
 							checkers_on_board.get_checker(choise_chacker).set_position(centre_on_square().x, centre_on_square().y);
 							if (queen_eat_checker()) {
@@ -118,7 +118,7 @@ public:
 								}
 							}
 						}
-						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).square_employment(checkers_on_board.get_checker(choise_chacker).get_color());
+						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 117) / 110, (centre_on_square().y - 117) / 110).cell_free_1(checkers_on_board.get_checker(choise_chacker).get_color());
 						who_can_move = !who_can_move;
 						checkers_on_board.get_checker(choise_chacker).unselect();
 						select_is_made = 0;
@@ -402,7 +402,7 @@ public:
 			int j = y;
 			while (1) {
 				if (i < (centre_on_square().x - 117) / 110 - 1 && j < (centre_on_square().y - 117) / 110 - 1) {
-					if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_free() == 1) {
 						x_eat = i + 1;
 						y_eat = j + 1;
 						break;
@@ -420,7 +420,7 @@ public:
 			int j = y;
 			while (1) {
 				if (i < (centre_on_square().x - 117) / 110 - 1 && j >(centre_on_square().y - 117) / 110 + 1) {
-					if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_free() == 1) {
 						x_eat = i + 1;
 						y_eat = j - 1;
 						break;
@@ -438,7 +438,7 @@ public:
 			int j = y;
 			while (1) {
 				if (i > (centre_on_square().x - 117) / 110 + 1 && j < (centre_on_square().y - 117) / 110 - 1) {
-					if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_free() == 1) {
 						x_eat = i - 1;
 						y_eat = j + 1;
 						break;
@@ -456,7 +456,7 @@ public:
 			int j = y;
 			while (1) {
 				if (i > (centre_on_square().x - 117) / 110 + 1 && j > (centre_on_square().y - 117) / 110 + 1) {
-					if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_employment() == 1) {
+					if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_free() == 1) {
 						x_eat = i - 1;
 						y_eat = j - 1;
 						break;
