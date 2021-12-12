@@ -29,17 +29,17 @@ public:
 	void off_backlight() {
 		this->backlight = 0;
 	}
-	void square_employment(bool _color) {
+	void square_employment(bool color) {
 		this->employment = 1;
-		this->checker_color = _color;
+		this->checker_color = color;
 	}
 	void square_free() {
 		this->employment = 0;
 	}
-	void set_color(Color _color) {
-		this->square.setFillColor(_color);
+	void set_color(Color color) {
+		this->square.setFillColor(color);
 	}
-	void set_position(float _x, float _y) {
-		this->square.setPosition(_x, _y);
+	void set_position(float x, float y) {
+		this->square.setPosition(x, y);
 	}
 };

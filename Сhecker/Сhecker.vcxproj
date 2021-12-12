@@ -76,10 +76,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Anakin  Skywalker\Desktop\Checkers-master\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mrrex\source\repos\checkers\include; C:\Users\Anakin  Skywalker\Desktop\Checkers-master\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Anakin  Skywalker\Desktop\Checkers-master\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Anakin  Skywalker\Desktop\Checkers-master\lib; C:\Users\Mrrex\source\repos\checkers\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>NotSet</SubSystem>
     </Link>
@@ -90,10 +90,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Anakin  Skywalker\Desktop\Checkers-master\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mrrex\source\repos\checkers\include; C:\Users\Anakin  Skywalker\Desktop\Checkers-master\include</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Anakin  Skywalker\Desktop\Checkers-master\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Anakin  Skywalker\Desktop\Checkers-master\lib; C:\Users\Mrrex\source\repos\checkers\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib; kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

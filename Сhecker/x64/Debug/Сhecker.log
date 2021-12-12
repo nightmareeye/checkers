@@ -1,7 +1,133 @@
-﻿Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::String::String(char const *,class std::locale const &)" (__imp_??0String@sf@@QEAA@PEBDAEBVlocale@std@@@Z) в функции "public: void __cdecl Board::draw_board(class sf::RenderWindow &)" (?draw_board@Board@@QEAAXAEAVRenderWindow@sf@@@Z).
+﻿  Checkers.cpp
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Board.h(19,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Board.h(19,46): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Board.h(29,41): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Board.h(29,33): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Board.h(60,33): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Board.h(62,34): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Board.h(67,35): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Board.h(69,35): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Checkers_on_board.h(21,1): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(95,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(95,53): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(97,107): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(97,85): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(99,41): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(100,41): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(109,107): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(109,85): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(113,41): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(114,41): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(146,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(146,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(148,61): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(148,54): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(151,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(151,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(153,61): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(153,54): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(158,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(158,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(160,61): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(160,54): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(163,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(163,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(165,61): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(165,54): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(176,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(176,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(177,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(177,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(178,64): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(178,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(180,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(180,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(186,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(186,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(187,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(187,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(188,64): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(188,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(190,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(190,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(196,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(196,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(197,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(197,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(198,64): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(198,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(200,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(200,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(206,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(206,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(207,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(207,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(208,64): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(208,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(210,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(210,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(224,132): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(224,90): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(253,23): warning C4838: Преобразование из "int" в "bool" требует сужающего преобразования.
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(253,27): warning C4838: Преобразование из "int" в "bool" требует сужающего преобразования.
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(253,31): warning C4838: Преобразование из "int" в "bool" требует сужающего преобразования.
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(253,35): warning C4838: Преобразование из "int" в "bool" требует сужающего преобразования.
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(255,15): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(256,15): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(260,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(260,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(266,43): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(266,30): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(290,14): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(291,14): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(293,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(293,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(299,43): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(299,30): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(323,14): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(324,14): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(326,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(326,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(332,43): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(332,30): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(356,14): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(357,14): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(359,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(359,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(365,43): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(365,30): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(401,10): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(402,10): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(419,10): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(420,10): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(437,10): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(438,10): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(455,10): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(456,10): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(475,131): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(475,89): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(396): warning C4715: Game::queen_square_for_move: значение возвращается не при всех путях выполнения
+C:\Users\Mrrex\source\repos\checkers\Сhecker\Game.h(32): warning C4715: Game::centre_on_square: значение возвращается не при всех путях выполнения
+Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::String::String(char const *,class std::locale const &)" (__imp_??0String@sf@@QEAA@PEBDAEBVlocale@std@@@Z) в функции "public: void __cdecl Board::draw_board(class sf::RenderWindow &)" (?draw_board@Board@@QEAAXAEAVRenderWindow@sf@@@Z).
 Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::String::String(wchar_t const *)" (__imp_??0String@sf@@QEAA@PEB_W@Z) в функции "public: void __cdecl Board::draw_board(class sf::RenderWindow &)" (?draw_board@Board@@QEAAXAEAVRenderWindow@sf@@@Z).
 Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::String::~String(void)" (__imp_??1String@sf@@QEAA@XZ) в функции "public: void __cdecl Board::draw_board(class sf::RenderWindow &)" (?draw_board@Board@@QEAAXAEAVRenderWindow@sf@@@Z).
-Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static class sf::Vector2<int> __cdecl sf::Mouse::getPosition(class sf::Window const &)" (__imp_?getPosition@Mouse@sf@@SA?AV?$Vector2@H@2@AEBVWindow@2@@Z) в функции "public: void __cdecl Game::set_mause_position(class sf::RenderWindow &)" (?set_mause_position@Game@@QEAAXAEAVRenderWindow@sf@@@Z).
+Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static class sf::Vector2<int> __cdecl sf::Mouse::getPosition(class sf::Window const &)" (__imp_?getPosition@Mouse@sf@@SA?AV?$Vector2@H@2@AEBVWindow@2@@Z) в функции "public: void __cdecl Game::mouse_pos(class sf::RenderWindow &)" (?mouse_pos@Game@@QEAAXAEAVRenderWindow@sf@@@Z).
 Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::VideoMode::VideoMode(unsigned int,unsigned int,unsigned int)" (__imp_??0VideoMode@sf@@QEAA@III@Z) в функции main.
 Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Window::close(void)" (__imp_?close@Window@sf@@QEAAXXZ) в функции "public: bool __cdecl Game::end_game(class sf::RenderWindow &,class sf::Event)" (?end_game@Game@@QEAA_NAEAVRenderWindow@sf@@VEvent@3@@Z).
 Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: bool __cdecl sf::Window::isOpen(void)const " (__imp_?isOpen@Window@sf@@QEBA_NXZ) в функции main.
@@ -46,8 +172,8 @@ Checkers.obj : error LNK2019: ссылка на неразрешенный вн�
 Checkers.obj : error LNK2001: неразрешенный внешний символ "private: virtual void __cdecl sf::Text::draw(class sf::RenderTarget &,class sf::RenderStates)const " (?draw@Text@sf@@EEBAXAEAVRenderTarget@2@VRenderStates@2@@Z).
 Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static class sf::RenderStates const sf::RenderStates::Default" (__imp_?Default@RenderStates@sf@@2V12@B) в функции "public: void __cdecl Board::draw_board(class sf::RenderWindow &)" (?draw_board@Board@@QEAAXAEAVRenderWindow@sf@@@Z).
 Checkers.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static class sf::Color const sf::Color::Black" (__imp_?Black@Color@sf@@2V12@B) в функции "public: void __cdecl Board::draw_board(class sf::RenderWindow &)" (?draw_board@Board@@QEAAXAEAVRenderWindow@sf@@@Z).
-C:\Users\Anakin  Skywalker\Desktop\Checkers-master\lib\sfml-graphics-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\Users\Anakin  Skywalker\Desktop\Checkers-master\lib\sfml-window-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\Users\Anakin  Skywalker\Desktop\Checkers-master\lib\sfml-system-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\Users\Anakin  Skywalker\Desktop\Checkers-master\lib\sfml-audio-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\Users\Anakin  Skywalker\Desktop\Checkers-master\x64\Debug\Сhecker.exe : fatal error LNK1120: неразрешенных внешних элементов: 48
+C:\Users\Mrrex\source\repos\checkers\lib\sfml-graphics-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\Mrrex\source\repos\checkers\lib\sfml-window-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\Mrrex\source\repos\checkers\lib\sfml-system-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\Mrrex\source\repos\checkers\lib\sfml-audio-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\Mrrex\source\repos\checkers\x64\Debug\Сhecker.exe : fatal error LNK1120: неразрешенных внешних элементов: 48

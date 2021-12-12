@@ -9,17 +9,17 @@ private:
 	Square all_squares[8][8];
 public:
 	Board(){}
-	Square &get_all_squares(int _i, int _j) {
-		return this->all_squares[_i][_j];
+	Square &get_all_squares(int i, int j) {
+		return this->all_squares[i][j];
 	}
 
-	void draw_board(RenderWindow &_window) {
+	void draw_board(RenderWindow &window) {
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {
 				all_squares[i - 1][j - 1].set_position(i * 50.0, j * 50);
 				if ((i + j) % 2 == 1) all_squares[i - 1][j - 1].set_color(Color(255, 178, 115));
 				else all_squares[i - 1][j - 1].set_color(Color(101, 61, 16));
-				_window.draw(all_squares[i - 1][j - 1].get_square());
+				window.draw(all_squares[i - 1][j - 1].get_square());
 			}
 		}
 		for (int i = 1; i <= 8; i++) {
@@ -29,7 +29,7 @@ public:
 					square_light.setPosition(i * 50, j * 50);
 					all_squares[i - 1][j - 1].set_color(Color(150, 120, 90));
 				}
-				_window.draw(all_squares[i - 1][j - 1].get_square());
+				window.draw(all_squares[i - 1][j - 1].get_square());
 			}
 		}
 		Font font;
@@ -58,16 +58,16 @@ public:
 		for (int i = 0; i < 8; i++) {
 			t[i]->setFillColor(Color::Black);
 			t[i]->setPosition(15, i * 50 + 55);
-			_window.draw(*t[i]);
+			window.draw(*t[i]);
 			t[i]->setPosition(465, i * 50 + 55);
-			_window.draw(*t[i]);
+			window.draw(*t[i]);
 		}
 		for (int i = 8; i < 16; i++) {
 			t[i]->setFillColor(Color::Black);
 			t[i]->setPosition((i - 8) * 50 + 60, 5);
-			_window.draw(*t[i]);
+			window.draw(*t[i]);
 			t[i]->setPosition((i - 8) * 50 + 60, 455);
-			_window.draw(*t[i]);
+			window.draw(*t[i]);
 		}
 	}
 };

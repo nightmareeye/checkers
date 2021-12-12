@@ -13,8 +13,8 @@ public:
 		return this->board;
 	}
 
-	Checker &get_checker(int _i) {
-		return this->checkers[_i];
+	Checker &get_checker(int i) {
+		return this->checkers[i];
 	}
 
 	int get_size() {
@@ -60,10 +60,10 @@ public:
 		start_game();//расставл€ю шашки
 	};
 
-	void draw_checkers(RenderWindow &_window) {//функци€ рисовани€ пол€ с фигурами
-		board.draw_board(_window);//рисую доску
+	void draw_checkers(RenderWindow &window) {//функци€ рисовани€ пол€ с фигурами
+		board.draw_board(window);//рисую доску
 		for (int i = 0; i < checkers.size(); i++) {
-			checkers[i].draw_checker(_window);//рисую каждую шашку
+			checkers[i].draw_checker(window);//рисую каждую шашку
 		}
 	}
 
