@@ -17,10 +17,10 @@ public:
 		return this->checker.getPosition();
 	}
 	float get_x() {
-		return (this->check_position().x - 117) / 80; // =get_position
+		return (this->check_position().x - 87) / 80; // =get_position
 	}
 	float get_y() {
-		return (this->check_position().y - 117) / 80; // =get_position
+		return (this->check_position().y - 87) / 80; // =get_position
 	}
 	bool get_color() {
 		return this->checker_color;
