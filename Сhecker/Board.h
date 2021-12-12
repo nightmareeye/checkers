@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include "Square.h"
 #include <iostream>
-using namespace sf;
-using namespace std;
+using namespace sf; // класс
+using namespace std; //биюлиотека
 
 class Board {
 private:
