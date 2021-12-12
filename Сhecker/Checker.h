@@ -17,23 +17,23 @@ public:
 		return this->checker.getPosition();
 	}
 	float get_x() {
-		return (this->get_position().x - 117) / 110;
+		return (this->check_position().x - 117) / 110; // =get_position
 	}
 	float get_y() {
-		return (this->get_position().y - 117) / 110;
+		return (this->check_position().y - 117) / 110; // =get_position
 	}
 	bool get_color() {
 		return this->checker_color;
 	}
-	bool get_select() {
+	bool check_select() { // =get_select
 		return this->choice; // =select
 	}
-	bool get_superior() { // =get_queen
+	bool check_superior() { // =get_queen
 		return this->superior; // =queen
 	}
 	
 	void make_superior() { // =make_queen
-		this->superior = 1; // = queen
+		this->superior = 1; // =queen
 	}
 	void set_position(float x_position, float y_position) {
 		this->checker.setPosition(x_position, y_position);
