@@ -63,7 +63,6 @@ public:
 										}
 									}
 									if (s == 0) {
-										error_choise_checker(window, event);
 										checkers_on_board.delete_backlight();
 										return;
 									}
@@ -521,113 +520,5 @@ public:
 		checkers_on_board.delete_backlight();
 		if (who_must_eat.size() != 0) return 1;
 		else return 0;
-	}
-	void error_choise_checker(RenderWindow &window, Event event) {
-		while (1) {
-			RectangleShape back = RectangleShape(Vector2f(170, 110));
-			back.setFillColor(Color(245, 210, 175));
-			back.setPosition(165, 225);
-			Font font;
-			font.loadFromFile("Font//bahnschrift.ttf");
-			Text t = Text("", font, 25);
-			t.setString(L"Eat necessary");
-			t.setFillColor(Color::Black);
-			t.setPosition(172, 235);
-			Text out = Text("", font, 11);
-			out.setString(L"press any key to continue");
-			out.setFillColor(Color::Black);
-			out.setPosition(173, 260);
-			window.draw(back);
-			window.draw(t);
-			window.draw(out);
-			window.display();
-			while (window.pollEvent(event)) {
-				if (event.type == sf::Event::MouseButtonPressed || event.type == sf::Event::KeyPressed) {
-					return;
-				}
-			}
-		}
-	}
-
-	void start_game(RenderWindow &window, Event event, bool &start) {
-		Font font;
-		font.loadFromFile("Font//bahnschrift.ttf");
-		Text t[5];
-		t[0] = Text("", font, 100);
-		t[0].setPosition(82, 150);
-		t[0].setStyle(Text::Bold);
-		t[0].setString(L"Шашки");
-		t[1] = Text("", font, 25);
-		t[1].setPosition(82,  260);
-		t[1].setString(L"левый щелчёк - выбор шашки");
-		t[2] = Text("", font, 25);
-		t[2].setPosition(82, 260 + 25);
-		t[2].setString(L"правый щелчёк - сделать ход");
-		t[3] = Text("", font, 14);
-		t[3].setFillColor(Color::Black);
-		t[3].setPosition(225, 484);
-		t[3].setString(L"нажмите любую клавишу чтобы продолжить");
-		for (int i = 0; i < 5; i++) {
-			t[i].setFillColor(Color::Black);
-		}
-		while (1) {	
-			window.clear(Color(245, 210, 175));
-			for (int i = 0; i < 5; i++) {
-				window.draw(t[i]);
-			}
-			window.display();
-			while (window.pollEvent(event)) {
-				if (event.type == sf::Event::MouseButtonPressed || event.type == sf::Event::KeyPressed) {
-					start = 0;
-					return;
-				}
-			}
-		}
-	}
-
-	bool end_game(RenderWindow &window, Event event) {
-		int black = 0;
-		int white = 0;
-		for (int i = 0; i < checkers_on_board.get_size(); i++) {
-			if (checkers_on_board.get_checker(i).get_color() == 0) {
-				white++;
-			}
-			if (checkers_on_board.get_checker(i).get_color() == 1) {
-				black++;
-			}
-		}
-		if (white == 0) {
-				RectangleShape back = RectangleShape(Vector2f(350, 150));
-				back.setFillColor(Color(245, 210, 175));
-				back.setPosition(75, 175);
-				Font font;
-				font.loadFromFile("Font//bahnschrift.ttf");
-				Text t = Text("", font, 81);
-				t.setString(L"Black win");
-				t.setFillColor(Color::Black);
-				t.setPosition(78, 190);
-				window.draw(back);
-				window.draw(t);
-				if (event.type == Event::Closed)
-					window.close();
-				return 0;		
-		}
-		if (black == 0) {
-			RectangleShape back = RectangleShape(Vector2f(350, 150));
-			back.setFillColor(Color(245, 210, 175));
-			back.setPosition(75, 175);
-			Font font;
-			font.loadFromFile("Font//bahnschrift.ttf");
-			Text t = Text("", font, 81);
-			t.setString(L"White win");
-			t.setFillColor(Color::Black);
-			t.setPosition(75, 190);
-			window.draw(back);
-			window.draw(t);
-			if (event.type == Event::Closed)
-				window.close();
-			return 0;			
-		}
-		return 1;
 	}
 }; 

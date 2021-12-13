@@ -55,10 +55,10 @@ public:
 		this->checker.setOutlineColor(Color(0, 0, 0));
 		this->checker_color = color;
 		if (color == 0) {
-			this->set_color(Color(180, 120, 55));
+			this->set_color(Color(159, 133, 103));
 		}
 		else if (color == 1) {
-			this->set_color(Color(61, 25, 7));
+			this->set_color(Color(37, 25, 13));
 		}
 		this->set_position(x_position, y_position);
 		this->choice = 0; // =select
@@ -82,7 +82,7 @@ public:
 		this->superior = checker.superior; //=queen
 		this->checker_color = checker.checker_color;
 		if (checker.checker_color == 0) {
-			this->set_color(Color(131, 107, 83));
+			this->set_color(Color(159, 133, 103));
 		}
 		else if (checker.checker_color == 1) {
 			this->set_color(Color(37, 25, 13));
