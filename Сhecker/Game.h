@@ -3,28 +3,18 @@
 using namespace sf;
 
 class Game {
-private:
-	int how_many = 0;
-	bool who_can_move = 0;//цвет хода, 0 если ход белых, 1 если ход черных
-	bool select_is_made = 0;//0 если фигуры не выбрана, 1 если выбрана
-	int choise_chacker;//номер выбранной для хода шашки
-	float x;//номер клетки в которой шашка по оси х
-	float y;//номер клетки в которой шашка по оси у
-	Vector2i mouse_position;//позиция мыши
-	Checkers_on_board checkers_on_board;
-	vector <int> who_must_eat;//храню шашки, которые могут съесть
 public:
 	Checkers_on_board & get_checkers_on_board() {
 		return this->checkers_on_board;
 	}
 	void mouse_pos(RenderWindow &window) { // Smenil nazvanie funcii
-		this->mouse_position = Mouse::getPosition(window);
+		this->pos_of_mouse = Mouse::getPosition(window);
 	}
 	Vector2i centre_on_square() {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (mouse_position.x < i * 80 + 160 && mouse_position.x < (i + 1) * 80 + 160 &&
-					mouse_position.y < j * 80 + 160 && mouse_position.y < (j + 1) * 80 + 160) {
+				if (pos_of_mouse.x < i * 80 + 160 && pos_of_mouse.x < (i + 1) * 80 + 160 &&
+					pos_of_mouse.y < j * 80 + 160 && pos_of_mouse.y < (j + 1) * 80 + 160) {
 					return Vector2i(i * 80 + 87, j * 80 + 87);
 				}
 			}
@@ -37,27 +27,27 @@ public:
 				mouse_pos(window);
 				if (event.type == sf::Event::MouseButtonPressed) {//для отмены взятия фигуры
 					if (event.key.code == Mouse::Left) {
-						if (checkers_on_board.get_checker(choise_chacker).check_select() == 1 && select_is_made == 1) { // =get_select
-							checkers_on_board.get_checker(choise_chacker).unselect(); // Smenil unselect
-							select_is_made = 0;
+						if (checkers_on_board.get_checker(checker_num).check_select() == 1 && selection == 1) { // =get_select
+							checkers_on_board.get_checker(checker_num).unselect(); // Smenil unselect
+							selection = 0;
 							std::cout << "Drop" << endl;
 							checkers_on_board.delete_backlight();
 							return;
 						}
 					}
 				}
-				cout << mouse_position.x << endl;
-				cout << mouse_position.y << endl;
+				cout << pos_of_mouse.x << endl;
+				cout << pos_of_mouse.y << endl;
 				for (int i = 0; i < checkers_on_board.get_size(); i++) {
-					if (this->mouse_position.x >= checkers_on_board.get_checker(i).check_position().x - 7 && // =get_position
-						this->mouse_position.x <= checkers_on_board.get_checker(i).check_position().x + 73 && // =get_position 
-						this->mouse_position.y >= checkers_on_board.get_checker(i).check_position().y - 7 && // =get_position
-						this->mouse_position.y <= checkers_on_board.get_checker(i).check_position().y + 73) { // =get_position
-						if (checkers_on_board.get_checker(i).check_select() == 0 && select_is_made == 0) { // =get_select
-							if (checkers_on_board.get_checker(i).get_color() == who_can_move) {
+					if (this->pos_of_mouse.x >= checkers_on_board.get_checker(i).check_position().x - 7 && // =get_position
+						this->pos_of_mouse.x <= checkers_on_board.get_checker(i).check_position().x + 73 && // =get_position 
+						this->pos_of_mouse.y >= checkers_on_board.get_checker(i).check_position().y - 7 && // =get_position
+						this->pos_of_mouse.y <= checkers_on_board.get_checker(i).check_position().y + 73) { // =get_position
+						if (checkers_on_board.get_checker(i).check_select() == 0 && selection == 0) { // =get_select
+							if (checkers_on_board.get_checker(i).get_color() == move_color) {
 								if (if_you_can_eat_you_must_eat(checkers_on_board.get_checker(i).get_color())) {
 									int s = 0;
-									for (int f : who_must_eat) {
+									for (int f : eat_checkers) {
 										if (f == i) {
 											s++;
 										}
@@ -67,14 +57,13 @@ public:
 										return;
 									}
 								}
-								choise_chacker = i;
-								select_is_made = 1;
-								checkers_on_board.get_checker(choise_chacker).select_checker();
-								std::cout << "Take" << endl;
-								x = checkers_on_board.get_checker(choise_chacker).get_x();
-								y = checkers_on_board.get_checker(choise_chacker).get_y();
-								if (checkers_on_board.get_checker(choise_chacker).check_superior()) { // =get_queen
-									queen_square_for_move(checkers_on_board.get_checker(choise_chacker).get_color(), 1, 1, 1, 1);
+								checker_num = i;
+								selection = 1;
+								checkers_on_board.get_checker(checker_num).select_checker();
+								x = checkers_on_board.get_checker(checker_num).get_x();
+								y = checkers_on_board.get_checker(checker_num).get_y();
+								if (checkers_on_board.get_checker(checker_num).check_superior()) { // =get_queen
+									queen_square_for_move(checkers_on_board.get_checker(checker_num).get_color(), 1, 1, 1, 1);
 								}
 								else {
 									square_for_move();
@@ -90,39 +79,38 @@ public:
 	void hod(RenderWindow &window, Event event) {//ход шашки // Smenil nazvanie funciiget_fon_active
 		if (event.type == sf::Event::MouseButtonPressed) {
 			if (event.key.code == Mouse::Right) {
-				if (checkers_on_board.get_checker(choise_chacker).check_select() == 1 && select_is_made == 1) { // =get_select
+				if (checkers_on_board.get_checker(checker_num).check_select() == 1 && selection == 1) { // =get_select
 					mouse_pos(window);
 					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 87) / 80, (centre_on_square().y - 87) / 80).get_fon_active()) {
 						checkers_on_board.get_board().get_all_squares(x, y).cell_free_0();
-						if (checkers_on_board.get_checker(choise_chacker).check_superior() == 1) { // =get_queen
-							checkers_on_board.get_checker(choise_chacker).set_position(centre_on_square().x, centre_on_square().y);
+						if (checkers_on_board.get_checker(checker_num).check_superior() == 1) { // =get_queen
+							checkers_on_board.get_checker(checker_num).set_position(centre_on_square().x, centre_on_square().y);
 							if (queen_eat_checker()) {
 								x = (centre_on_square().x - 87) / 80;
 								y = (centre_on_square().y - 87) / 80;
 								checkers_on_board.delete_backlight();
-								if (queen_square_for_move(checkers_on_board.get_checker(choise_chacker).get_color(), 1, 1, 1, 1)) {
-									cout << "loop" << endl;
+								if (queen_square_for_move(checkers_on_board.get_checker(checker_num).get_color(), 1, 1, 1, 1)) {
 									return;
 								}
 							}
 						}
 						else {
-							checkers_on_board.get_checker(choise_chacker).set_position(centre_on_square().x, centre_on_square().y);
+							checkers_on_board.get_checker(checker_num).set_position(centre_on_square().x, centre_on_square().y);
 							make_queen();
 							if (eat_checker()) {
 								checkers_on_board.delete_backlight();
 								x = (centre_on_square().x - 87) / 80;
 								y = (centre_on_square().y - 87) / 80;
-								if (!chance_eat_checker(checkers_on_board.get_checker(choise_chacker).get_color())) {
+								if (!chance_eat_checker(checkers_on_board.get_checker(checker_num).get_color())) {
 									cout << "loop" << endl;
 									return;
 								}
 							}
 						}
-						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 87) / 80, (centre_on_square().y - 87) / 80).cell_free_1(checkers_on_board.get_checker(choise_chacker).get_color());
-						who_can_move = !who_can_move;
-						checkers_on_board.get_checker(choise_chacker).unselect();
-						select_is_made = 0;
+						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 87) / 80, (centre_on_square().y - 87) / 80).cell_free_1(checkers_on_board.get_checker(checker_num).get_color());
+						move_color = !move_color;
+						checkers_on_board.get_checker(checker_num).unselect();
+						selection = 0;
 						std::cout << "Drop" << endl;
 						for (int i = 0; i < 8; i++) {
 							for (int j = 0; j < 8; j++) {
@@ -143,7 +131,7 @@ public:
 	}
 
 	void square_for_move() {//варианты хода
-		if (checkers_on_board.get_checker(choise_chacker).get_color()) {
+		if (checkers_on_board.get_checker(checker_num).get_color()) {
 			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_free() == 0) {
 				if (end_board(x + 1, y + 1)) {
 					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).on_fon_active();
@@ -167,9 +155,9 @@ public:
 				}
 			}
 		}
-		if (!chance_eat_checker(checkers_on_board.get_checker(choise_chacker).get_color())) {//варианты съесть шашку
+		if (!chance_eat_checker(checkers_on_board.get_checker(checker_num).get_color())) {//варианты съесть шашку
 			checkers_on_board.delete_backlight();
-			chance_eat_checker(checkers_on_board.get_checker(choise_chacker).get_color());
+			chance_eat_checker(checkers_on_board.get_checker(checker_num).get_color());
 		}
 	}
 	bool chance_eat_checker(bool color) {//варианты съесть шашку
@@ -220,15 +208,15 @@ public:
 		if ((centre_on_square().x - 87) / 80 - x == 2 || (centre_on_square().x - 87) / 80 - x == -2 &&
 			(centre_on_square().y - 87) / 80 - y == 2 || (centre_on_square().y - 87) / 80 - y == -2) {
 			for (int i = 0; i < checkers_on_board.get_size(); i++) {
-				if (checkers_on_board.get_checker(i).get_x() == x + (checkers_on_board.get_checker(choise_chacker).get_x() - x) / 2 &&
-					checkers_on_board.get_checker(i).get_y() == y + (checkers_on_board.get_checker(choise_chacker).get_y() - y) / 2) {
+				if (checkers_on_board.get_checker(i).get_x() == x + (checkers_on_board.get_checker(checker_num).get_x() - x) / 2 &&
+					checkers_on_board.get_checker(i).get_y() == y + (checkers_on_board.get_checker(checker_num).get_y() - y) / 2) {
 					checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(i).get_x(), checkers_on_board.get_checker(i).get_y()).cell_free_0();
 					for (int j = i; j < checkers_on_board.get_size() - 1; j++) {
 						checkers_on_board.get_checker(j) = checkers_on_board.get_checker(j + 1);
 					}
 					checkers_on_board.delete_checker();
-					if (i < choise_chacker) {
-						choise_chacker = choise_chacker - 1;
+					if (i < checker_num) {
+						checker_num = checker_num - 1;
 					}
 					return 1;
 				}
@@ -238,14 +226,14 @@ public:
 	}
 
 	void make_queen() {
-		if (checkers_on_board.get_checker(choise_chacker).get_color() == 0) {
-			if (checkers_on_board.get_checker(choise_chacker).get_y() == 0) {
-				checkers_on_board.get_checker(choise_chacker).make_superior();
+		if (checkers_on_board.get_checker(checker_num).get_color() == 0) {
+			if (checkers_on_board.get_checker(checker_num).get_y() == 0) {
+				checkers_on_board.get_checker(checker_num).make_superior();
 			}
 		}
-		if (checkers_on_board.get_checker(choise_chacker).get_color() == 1) {
-			if (checkers_on_board.get_checker(choise_chacker).get_y() == 7) {
-				checkers_on_board.get_checker(choise_chacker).make_superior();
+		if (checkers_on_board.get_checker(checker_num).get_color() == 1) {
+			if (checkers_on_board.get_checker(checker_num).get_y() == 7) {
+				checkers_on_board.get_checker(checker_num).make_superior();
 			}
 		}
 	}
@@ -479,8 +467,8 @@ public:
 					checkers_on_board.get_checker(c) = checkers_on_board.get_checker(c + 1);
 				}
 				checkers_on_board.delete_checker();
-				if (f < choise_chacker) {
-					choise_chacker = choise_chacker - 1;
+				if (f < checker_num) {
+					checker_num = checker_num - 1;
 				}
 				return 1;
 			}
@@ -496,8 +484,8 @@ public:
 	}
 
 	bool if_you_can_eat_you_must_eat(bool color) {
-		while (who_must_eat.size() != 0) {
-			who_must_eat.pop_back();
+		while (eat_checkers.size() != 0) {
+			eat_checkers.pop_back();
 		}
 		for (int i = 0; i < checkers_on_board.get_size(); i++) {
 			if (checkers_on_board.get_checker(i).get_color() == color) {
@@ -505,20 +493,29 @@ public:
 					x = checkers_on_board.get_checker(i).get_x();
 					y = checkers_on_board.get_checker(i).get_y();
 					if (!chance_eat_checker(color)) {
-						who_must_eat.push_back(i);
+						eat_checkers.push_back(i);
 					}
 				}
 				if (checkers_on_board.get_checker(i).check_superior() == 1) { // =get_queen
 					x = checkers_on_board.get_checker(i).get_x();
 					y = checkers_on_board.get_checker(i).get_y();
 					if (queen_square_for_move(color, 1, 1, 1, 1)) {
-						who_must_eat.push_back(i);
+						eat_checkers.push_back(i);
 					}
 				}
 			}
 		}
 		checkers_on_board.delete_backlight();
-		if (who_must_eat.size() != 0) return 1;
+		if (eat_checkers.size() != 0) return 1;
 		else return 0;
 	}
+	private:
+		bool move_color = 0;//цвет хода, 0 если ход белых, 1 если ход черных
+		bool selection = 0;//0 если фигуры не выбрана, 1 если выбрана
+		int checker_num;//номер выбранной для хода шашки
+		float x;//номер клетки в которой шашка по оси х
+		float y;//номер клетки в которой шашка по оси у
+		Vector2i pos_of_mouse;//позиция мыши
+		Checkers_on_board checkers_on_board;
+		vector <int> eat_checkers;//храню шашки, которые могут съесть
 }; 
