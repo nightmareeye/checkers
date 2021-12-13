@@ -2,38 +2,31 @@
 using namespace sf;
 
 class Checker {
-private:
-	CircleShape checker = CircleShape(35);
-	bool checker_color;// 0 для белых, 1 для черных
-	bool choice = 0;//1 если выбрана, 0 если нет =select
-	bool superior = 1;//1 если шашка дамка, 0 если нет =queen
-	Texture checker_texture;//текстура значка дамки =texture
-	Sprite sprite;//спрайт значка дамки
 public:
 	CircleShape &get_checker() {
 		return this->checker;
 	}
-	Vector2f check_position() { // =get_position
+	Vector2f check_position() { // передает позицию
 		return this->checker.getPosition();
 	}
 	float get_x() {
-		return (this->check_position().x - 87) / 80; // =get_position
+		return (this->check_position().x - 87) / 80;
 	}
 	float get_y() {
-		return (this->check_position().y - 87) / 80; // =get_position
+		return (this->check_position().y - 87) / 80;
 	}
 	bool get_color() {
 		return this->checker_color;
 	}
-	bool check_select() { // =get_select
-		return this->choice; // =select
+	bool check_select() {
+		return this->choice;
 	}
-	bool check_superior() { // =get_queen
-		return this->superior; // =queen
+	bool check_superior() {
+		return this->superior;
 	}
 	
-	void make_superior() { // =make_queen
-		this->superior = 1; // =queen
+	void make_superior() {
+		this->superior = 1;
 	}
 	void set_position(float x_position, float y_position) {
 		this->checker.setPosition(x_position, y_position);
@@ -42,7 +35,7 @@ public:
 		this->checker.setFillColor(color);
 	}
 	void select_checker() {//выбор фигуры
-		this->choice= 1; // =select
+		this->choice= 1;
 	}
 	void unselect() {//отмена выбора фигуры
 		this->choice = 0; 
@@ -61,7 +54,7 @@ public:
 			this->set_color(Color(37, 25, 13));
 		}
 		this->set_position(x_position, y_position);
-		this->choice = 0; // =select
+		this->choice = 0;
 	}
 
 	void draw_checker(RenderWindow  &window) {
@@ -76,10 +69,10 @@ public:
 	}
 
 	Checker operator = (Checker checker) {
-		this->checker_texture = checker.checker_texture; // =get_position
+		this->checker_texture = checker.checker_texture;
 		this->sprite = checker.sprite;
-		this->choice = checker.choice; // =select
-		this->superior = checker.superior; //=queen
+		this->choice = checker.choice;
+		this->superior = checker.superior;
 		this->checker_color = checker.checker_color;
 		if (checker.checker_color == 0) {
 			this->set_color(Color(159, 133, 103));
@@ -87,7 +80,14 @@ public:
 		else if (checker.checker_color == 1) {
 			this->set_color(Color(37, 25, 13));
 		}
-		this->set_position(checker.check_position().x, checker.check_position().y); // =get_position
+		this->set_position(checker.check_position().x, checker.check_position().y);
 		return (*this);
 	}
+private:
+	CircleShape checker = CircleShape(35);
+	bool checker_color;// 0 = белые, 1 = черные
+	bool choice = 0;//1 если выбрана, 0 если нет
+	bool superior = 1;//1 если шашка дамка, 0 если нет
+	Texture checker_texture;//текстура значка дамки
+	Sprite sprite;//спрайт значка дамки
 };
