@@ -87,7 +87,7 @@ private:
 	CircleShape checker = CircleShape(35);
 	bool checker_color;// 0 = белые, 1 = черные
 	bool choice = 0;//1 если выбрана, 0 если нет
-	bool superior = 1;//1 если шашка дамка, 0 если нет
+	bool superior = 0;//1 если шашка дамка, 0 если нет
 	Texture checker_texture;//текстура значка дамки
 	Sprite sprite;//спрайт значка дамки
 };
