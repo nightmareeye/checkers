@@ -5,9 +5,6 @@
 using namespace sf;
 
 class Checkers_on_board {
-private:
-	vector <Checker> checkers;//светлые шашки
-	Board board;
 public:
 	Board &get_board() {
 		return this->board;
@@ -57,10 +54,10 @@ public:
 	}
 
 	Checkers_on_board() {
-		start_game();//расставляю шашки
+		start_game();//стартовая позиция шашек
 	};
 
-	void draw_checkers(RenderWindow &window) {//функция рисования поля с фигурами
+	void draw_checkers(RenderWindow &window) {//создание поля с фигурами
 		board.draw_board(window);//рисую доску
 		for (int i = 0; i < checkers.size(); i++) {
 			checkers[i].draw_checker(window);//рисую каждую шашку
@@ -74,4 +71,7 @@ public:
 			}
 		}
 	}
+private:
+	vector <Checker> checkers;//светлые шашки
+	Board board;
 };

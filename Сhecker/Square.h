@@ -2,43 +2,43 @@
 using namespace sf; 
 
 class Square {
-private:
-	bool fon_active = 0;// подцветка 0 если нет, 1 если есть = backlight
-	bool free = 0;// 0 для свободных, 1 для занятых = employment
-	bool checker_color;// 0 для белых, 1 для черных 
-	RectangleShape cell = RectangleShape(Vector2f(80, 80));//=square
 public:
 	Square() { ; }
 
-	RectangleShape &get_cell() { //=get_square
-		return this->cell;//=square
+	RectangleShape &get_cell() { 
+		return this->cell;
 	}
-	bool get_fon_active() { //=get_backlight
-		return this->fon_active; //=backlight
+	bool get_fon_active() { 
+		return this->fon_active; 
 	}
-	bool get_free() { //=get_employment
-		return this->free;//=employment
+	bool get_free() { 
+		return this->free;
 	}
 	bool get_checker_color() {
 		return this->checker_color;
 	}
-	void off_fon_active() {//=off_backlight
-		this->fon_active = 0;//=backlight
+	void off_fon_active() {
+		this->fon_active = 0;
 	}
-	void on_fon_active() { //=on_backlight
-		this->fon_active = 1; //=backlight
+	void on_fon_active() { 
+		this->fon_active = 1; 
 	}
-	void cell_free_0() {//=square_free
-		this->free = 0;//=employment
+	void cell_free_0() {
+		this->free = 0;
 	}
-		void cell_free_1(bool color) {//=square_employment
-		this->free = 1;//=employment
+		void cell_free_1(bool color) {
+		this->free = 1;
 		this->checker_color = color;
 	}
 	void set_color(Color color) {
-		this->cell.setFillColor(color); //=square
+		this->cell.setFillColor(color); 
 	}
 	void set_position(float x, float y) {
-		this->cell.setPosition(x, y);//=square
+		this->cell.setPosition(x, y);
 	}
+private:
+	bool fon_active = 0;// 1 подцветки есть, 0 = нет подцветки  
+	bool free = 0;// 1 = заняте клетки, 0 = свободные клетки
+	bool checker_color;// 1 = черные шашки, 0 = белые шашки
+	RectangleShape cell = RectangleShape(Vector2f(80, 80));
 };

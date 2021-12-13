@@ -5,8 +5,6 @@ using namespace sf; // класс
 using namespace std; //библиотека
 
 class Board {
-private:
-	Square all_squares[8][8];
 public:
 	Board(){}
 	Square &get_all_squares(int i, int j) {
@@ -71,4 +69,6 @@ public:
 			window.draw(*t[i]);
 		}*/
 	}
+private:
+	Square all_squares[8][8];
 };
