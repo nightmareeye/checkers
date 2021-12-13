@@ -6,69 +6,30 @@ using namespace std; //библиотека
 
 class Board {
 public:
-	Board(){}
-	Square &get_all_squares(int i, int j) {
+	Square &get_all_squares(int i, int j) { // получение €чейки с номером i, j
 		return this->all_squares[i][j];
 	}
 
-	void draw_board(RenderWindow &window) {
+	void draw_board(RenderWindow &window) { // отрисовка
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {
-				all_squares[i - 1][j - 1].set_position(i * 80.0, j * 80);
-				if ((i + j) % 2 == 1) all_squares[i - 1][j - 1].set_color(Color(115, 95, 74));
-				else all_squares[i - 1][j - 1].set_color(Color(51, 37, 22));
-				window.draw(all_squares[i - 1][j - 1].get_cell());
+				all_squares[i - 1][j - 1].set_position(i * 80.0, j * 80); // присвоение координат €чейке
+				if ((i + j) % 2 == 1) all_squares[i - 1][j - 1].set_color(Color(115, 95, 74)); // присвоение светлого цвета €чейке
+				else all_squares[i - 1][j - 1].set_color(Color(51, 37, 22)); // присвоение темного цвета €чейке
+				window.draw(all_squares[i - 1][j - 1].get_cell()); // отрисовка €чеек
 			}
-
 		}
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {
-				if (all_squares[i - 1][j - 1].get_fon_active() == 1) {
-					RectangleShape square_light(Vector2f(80, 80));
-					square_light.setPosition(i * 80, j * 80);
-					all_squares[i - 1][j - 1].set_color(Color(150, 120, 90));
+				if (all_squares[i - 1][j - 1].get_fon_active() == 1) { // если клетка подцвечена
+					RectangleShape square_light(Vector2f(80, 80)); // присвоение размера
+					square_light.setPosition(i * 80, j * 80); // присвоение координат
+					all_squares[i - 1][j - 1].set_color(Color(150, 120, 90)); // подцветка активной клетки
 				}
-				window.draw(all_squares[i - 1][j - 1].get_cell());
+				window.draw(all_squares[i - 1][j - 1].get_cell()); // отрисовка
 			}
 		}
-		/*Font font;
-		font.loadFromFile("Font//bahnschrift.ttf");
-		Text *t[16];
-		for (int i = 0; i < 16; i++) {
-			t[i] = new Text("", font, 35);
-
-		}
-		t[0]->setString(L"1");
-		t[1]->setString(L"2");
-		t[2]->setString(L"3");
-		t[3]->setString(L"4");
-		t[4]->setString(L"5");
-		t[5]->setString(L"6");
-		t[6]->setString(L"7");
-		t[7]->setString(L"8");
-		t[8]->setString(L"ј");
-		t[9]->setString(L"B");
-		t[10]->setString(L"C");
-		t[11]->setString(L"D");
-		t[12]->setString(L"E");
-		t[13]->setString(L"F");
-		t[14]->setString(L"G");
-		t[15]->setString(L"H");
-		for (int i = 0; i < 8; i++) {
-			t[i]->setFillColor(Color::Black);
-			t[i]->setPosition(15, i * 50 + 55);
-			window.draw(*t[i]);
-			t[i]->setPosition(465, i * 50 + 55);
-			window.draw(*t[i]);
-		}
-		for (int i = 8; i < 16; i++) {
-			t[i]->setFillColor(Color::Black);
-			t[i]->setPosition((i - 8) * 50 + 60, 5);
-			window.draw(*t[i]);
-			t[i]->setPosition((i - 8) * 50 + 60, 455);
-			window.draw(*t[i]);
-		}*/
 	}
 private:
-	Square all_squares[8][8];
+	Square all_squares[8][8]; //количество €чеек
 };
