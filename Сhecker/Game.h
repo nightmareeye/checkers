@@ -93,7 +93,7 @@ public:
 						//}
 						//else {
 							checkers_on_board.get_checker(checker_num).set_position(centre_on_square().x, centre_on_square().y);
-							make_queen();
+							//make_queen();
 							if (eat_checker()) {
 								checkers_on_board.delete_backlight();
 								x = (centre_on_square().x - 87) / 80;
