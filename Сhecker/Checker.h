@@ -21,13 +21,13 @@ public:
 	bool check_select() { // передает выбрана ли шашка
 		return this->choice;
 	}
-	bool check_superior() { // передает дамка ли шашка
-		return this->superior;
-	}
-	
-	void make_superior() { // делает дамкой шашку
-		this->superior = 1;
-	}
+	//bool check_superior() { // передает дамка ли шашка
+	//	return this->superior;
+	//}
+	//
+	//void make_superior() { // делает дамкой шашку
+	//	this->superior = 1;
+	//}
 	void set_position(float x_position, float y_position) { // задает координаты х, у шашке
 		this->checker.setPosition(x_position, y_position);
 	}
@@ -57,12 +57,12 @@ public:
 
 	void draw_checker(RenderWindow  &window) { // рисуем шашку
 		window.draw(this->checker);
-		if (superior == 1) { // если дамка
-			this->checker_texture.loadFromFile("Images//Queen.png"); // выбираем картинку для текстурки
-			this->sprite.setTexture(checker_texture); // текстурка
-			this->sprite.setTextureRect(IntRect(-22, -22, 45, 45)); // позиция текстурки
-			this->sprite.setPosition(this->check_position().x, this->check_position().y); // передаем положение шашки
-		}
+		//if (superior == 1) { // если дамка
+		//	this->checker_texture.loadFromFile("Images//Queen.png"); // выбираем картинку для текстурки
+		//	this->sprite.setTexture(checker_texture); // текстурка
+		//	this->sprite.setTextureRect(IntRect(-22, -22, 45, 45)); // позиция текстурки
+		//	this->sprite.setPosition(this->check_position().x, this->check_position().y); // передаем положение шашки
+		//}
 		window.draw(this->sprite);
 	}
 
@@ -85,7 +85,7 @@ private:
 	CircleShape checker = CircleShape(35); // радиус шашки
 	bool checker_color;// 0 = белые, 1 = черные
 	bool choice = 0;// 1 если выбрана, 0 если нет
-	bool superior = 0;// 1 если шашка дамка, 0 если нет
+//	bool superior = 0;// 1 если шашка дамка, 0 если нет
 	Texture checker_texture;// текстура значка дамки
 	Sprite sprite;// спрайт значка дамки
 };

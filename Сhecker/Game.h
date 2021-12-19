@@ -59,12 +59,12 @@ public:
 								checkers_on_board.get_checker(checker_num).select_checker();
 								x = checkers_on_board.get_checker(checker_num).get_x();
 								y = checkers_on_board.get_checker(checker_num).get_y();
-								if (checkers_on_board.get_checker(checker_num).check_superior()) { // проверка на дамку
-									queen_square_for_move(checkers_on_board.get_checker(checker_num).get_color(), 1, 1, 1, 1);
-								}
-								else {
-									square_for_move(); // клетка для хода
-								}
+								//if (checkers_on_board.get_checker(checker_num).check_superior()) { // проверка на дамку
+								//	queen_square_for_move(checkers_on_board.get_checker(checker_num).get_color(), 1, 1, 1, 1);
+								//}
+								//else {
+								//	square_for_move(); // клетка для хода
+								//}
 								return;
 							}
 						}
@@ -80,18 +80,18 @@ public:
 					mouse_pos(window);
 					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 87) / 80, (centre_on_square().y - 87) / 80).get_fon_active()) {
 						checkers_on_board.get_board().get_all_squares(x, y).cell_free_0();
-						if (checkers_on_board.get_checker(checker_num).check_superior() == 1) { // если шашка дамка
-							checkers_on_board.get_checker(checker_num).set_position(centre_on_square().x, centre_on_square().y);
-							if (queen_eat_checker()) {
-								x = (centre_on_square().x - 87) / 80;
-								y = (centre_on_square().y - 87) / 80;
-								checkers_on_board.delete_backlight();
-								if (queen_square_for_move(checkers_on_board.get_checker(checker_num).get_color(), 1, 1, 1, 1)) {
-									return;
-								}
-							}
-						}
-						else {
+						//if (checkers_on_board.get_checker(checker_num).check_superior() == 1) { // если шашка дамка
+						//	checkers_on_board.get_checker(checker_num).set_position(centre_on_square().x, centre_on_square().y);
+						//	if (queen_eat_checker()) {
+						//		x = (centre_on_square().x - 87) / 80;
+						//		y = (centre_on_square().y - 87) / 80;
+						//		checkers_on_board.delete_backlight();
+						//		if (queen_square_for_move(checkers_on_board.get_checker(checker_num).get_color(), 1, 1, 1, 1)) {
+						//			return;
+						//		}
+						//	}
+						//}
+						//else {
 							checkers_on_board.get_checker(checker_num).set_position(centre_on_square().x, centre_on_square().y);
 							make_queen();
 							if (eat_checker()) {
@@ -103,7 +103,7 @@ public:
 									return;
 								}
 							}
-						}
+					//	}
 						checkers_on_board.get_board().get_all_squares((centre_on_square().x - 87) / 80, (centre_on_square().y - 87) / 80).cell_free_1(checkers_on_board.get_checker(checker_num).get_color());
 						move_color = !move_color;
 						checkers_on_board.get_checker(checker_num).unselect();
@@ -222,256 +222,256 @@ public:
 		return 0;
 	}
 
-	void make_queen() { // делаем дамкой
-		if (checkers_on_board.get_checker(checker_num).get_color() == 0) { // для белых
-			if (checkers_on_board.get_checker(checker_num).get_y() == 0) {
-				checkers_on_board.get_checker(checker_num).make_superior();
-			}
-		}
-		if (checkers_on_board.get_checker(checker_num).get_color() == 1) { // для черных
-			if (checkers_on_board.get_checker(checker_num).get_y() == 7) {
-				checkers_on_board.get_checker(checker_num).make_superior();
-			}
-		}
-	}
-	bool queen_square_for_move(bool color, int i1, int i2, int i3, int i4) { // варианты хода дамки
-		int must_eat = 0;
-		bool can_eat[4] = { i1, i2, i3, i4 };
-		checkers_on_board.delete_backlight();
-		int x_queen = x;
-		int y_queen = y;
-		if (can_eat[0]) {
-			can_eat[0] = 0;
-			while (1) {
-				if (end_board(x_queen + 1, y_queen + 1)) {
-					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_free() == 1) {
-						if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_checker_color() == color) {
-							break;
-						}
-						else if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_checker_color() != color) {
-							if (end_board(x_queen + 2, y_queen + 2)) {
-								if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).get_free() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).on_fon_active();
-									x_queen = x_queen + 2;
-									y_queen = y_queen + 2;
-									must_eat++;
-									can_eat[0] = 1;
-								}
-								else break;
-							}
-							else break;
-						}
-					}
-					else {
-						checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).on_fon_active();
-						x_queen = x_queen + 1;
-						y_queen = y_queen + 1;
-					}
-				}
-				else break;
-			}
-		}
-		if (can_eat[1]) {
-			can_eat[1] = 0;
-			x_queen = x;
-			y_queen = y;
-			while (1) {
-				if (end_board(x_queen - 1, y_queen + 1)) {
-					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_free() == 1) {
-						if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_checker_color() == color) {
-							break;
-						}
-						else if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_checker_color() != color) {
-							if (end_board(x_queen - 2, y_queen + 2)) {
-								if (checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen + 2).get_free() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen + 2).on_fon_active();
-									x_queen = x_queen - 2;
-									y_queen = y_queen + 2;
-									must_eat++;
-									can_eat[1] = 1;
-								}
-								else break;
-							}
-							else break;
-						}
-					}
-					else {
-						checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).on_fon_active();
-						x_queen = x_queen - 1;
-						y_queen = y_queen + 1;
-					}
-				}
-				else break;
-			}
-		}
-		if (can_eat[2]) {
-			can_eat[2] = 0;
-			x_queen = x;
-			y_queen = y;
-			while (1) {
-				if (end_board(x_queen + 1, y_queen - 1)) {
-					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_free() == 1) {
-						if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_checker_color() == color) {
-							break;
-						}
-						else if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_checker_color() != color) {
-							if (end_board(x_queen + 2, y_queen - 2)) {
-								if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen - 2).get_free() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen - 2).on_fon_active();
-									x_queen = x_queen + 2;
-									y_queen = y_queen - 2;
-									must_eat++;
-									can_eat[2] = 1;
-								}
-								else break;
-							}
-							else break;
-						}
-					}
-					else {
-						checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).on_fon_active();
-						x_queen = x_queen + 1;
-						y_queen = y_queen - 1;
-					}
-				}
-				else break;
-			}
-		}
-		if (can_eat[3]) {
-			can_eat[3] = 0;
-			x_queen = x;
-			y_queen = y;
-			while (1) {
-				if (end_board(x_queen - 1, y_queen - 1)) {
-					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_free() == 1) {
-						if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_checker_color() == color) {
-							break;
-						}
-						else if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_checker_color() != color) {
-							if (end_board(x_queen - 2, y_queen - 2)) {
-								if (checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen - 2).get_free() == 0) {
-									checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen - 2).on_fon_active();
-									x_queen = x_queen - 2;
-									y_queen = y_queen - 2;
-									must_eat++;
-									can_eat[3] = 1;
-								}
-								else break;
-							}
-							else break;
-						}
-					}
-					else {
-						checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).on_fon_active();
-						x_queen = x_queen - 1;
-						y_queen = y_queen - 1;
-					}
-				}
-				else break;
-			}
-		}
-		if (must_eat == 0) {
-			return 0;
-		}
-		else {
-			if (i1 == 1 && i2 == 1 && i3 == 1 && i4 == 1) {
-				queen_square_for_move(color, can_eat[0], can_eat[1], can_eat[2], can_eat[3]);
-			}
-			else return 1;
-		}
-	}
-	bool queen_eat_checker() { // дамка рубит шашку
-		int x_eat = 0;
-		int y_eat = 0;
-		if ((centre_on_square().x - 87) / 80 - x >= 2 && (centre_on_square().y - 87) / 80 - y >= 2) {
-			int i = x;
-			int j = y;
-			while (1) {
-				if (i < (centre_on_square().x - 87) / 80 - 1 && j < (centre_on_square().y - 87) / 80 - 1) {
-					if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_free() == 1) {
-						x_eat = i + 1;
-						y_eat = j + 1;
-						break;
-					}
-					else {
-						i++;
-						j++;
-					}
-				}
-				else break;
-			}
-		}
-		if ((centre_on_square().x - 87) / 80 - x >= 2 && y - (centre_on_square().y - 87) / 80 >= 2) {
-			int i = x;
-			int j = y;
-			while (1) {
-				if (i < (centre_on_square().x - 87) / 80 - 1 && j >(centre_on_square().y - 87) / 80 + 1) {
-					if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_free() == 1) {
-						x_eat = i + 1;
-						y_eat = j - 1;
-						break;
-					}
-					else {
-						i++;
-						j--;
-					}
-				}
-				else break;
-			}
-		}
-		if (x - (centre_on_square().x - 87) / 80 >= 2 && (centre_on_square().y - 87) - y / 80 >= 2) {
-			int i = x;
-			int j = y;
-			while (1) {
-				if (i > (centre_on_square().x - 87) / 80 + 1 && j < (centre_on_square().y - 87) / 80 - 1) {
-					if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_free() == 1) {
-						x_eat = i - 1;
-						y_eat = j + 1;
-						break;
-					}
-					else {
-						i--;
-						j++;
-					}
-				}
-				else break;
-			}
-		}
-		if (x - (centre_on_square().x - 87) / 80 >= 2 && y - (centre_on_square().y - 87) / 80 >= 2) {
-			int i = x;
-			int j = y;
-			while (1) {
-				if (i > (centre_on_square().x - 87) / 80 + 1 && j > (centre_on_square().y - 87) / 80 + 1) {
-					if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_free() == 1) {
-						x_eat = i - 1;
-						y_eat = j - 1;
-						break;
-					}
-					else {
-						i--;
-						j--;
-					}
-				}
-				else break;
-			}
-		}
+	//void make_queen() { // делаем дамкой
+	//	if (checkers_on_board.get_checker(checker_num).get_color() == 0) { // для белых
+	//		if (checkers_on_board.get_checker(checker_num).get_y() == 0) {
+	//			checkers_on_board.get_checker(checker_num).make_superior();
+	//		}
+	//	}
+	//	if (checkers_on_board.get_checker(checker_num).get_color() == 1) { // для черных
+	//		if (checkers_on_board.get_checker(checker_num).get_y() == 7) {
+	//			checkers_on_board.get_checker(checker_num).make_superior();
+	//		}
+	//	}
+	//}
+	//bool queen_square_for_move(bool color, int i1, int i2, int i3, int i4) { // варианты хода дамки
+	//	int must_eat = 0;
+	//	bool can_eat[4] = { i1, i2, i3, i4 };
+	//	checkers_on_board.delete_backlight();
+	//	int x_queen = x;
+	//	int y_queen = y;
+	//	if (can_eat[0]) {
+	//		can_eat[0] = 0;
+	//		while (1) {
+	//			if (end_board(x_queen + 1, y_queen + 1)) {
+	//				if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_free() == 1) {
+	//					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_checker_color() == color) {
+	//						break;
+	//					}
+	//					else if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_checker_color() != color) {
+	//						if (end_board(x_queen + 2, y_queen + 2)) {
+	//							if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).get_free() == 0) {
+	//								checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen + 2).on_fon_active();
+	//								x_queen = x_queen + 2;
+	//								y_queen = y_queen + 2;
+	//								must_eat++;
+	//								can_eat[0] = 1;
+	//							}
+	//							else break;
+	//						}
+	//						else break;
+	//					}
+	//				}
+	//				else {
+	//					checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).on_fon_active();
+	//					x_queen = x_queen + 1;
+	//					y_queen = y_queen + 1;
+	//				}
+	//			}
+	//			else break;
+	//		}
+	//	}
+	//	if (can_eat[1]) {
+	//		can_eat[1] = 0;
+	//		x_queen = x;
+	//		y_queen = y;
+	//		while (1) {
+	//			if (end_board(x_queen - 1, y_queen + 1)) {
+	//				if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_free() == 1) {
+	//					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_checker_color() == color) {
+	//						break;
+	//					}
+	//					else if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_checker_color() != color) {
+	//						if (end_board(x_queen - 2, y_queen + 2)) {
+	//							if (checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen + 2).get_free() == 0) {
+	//								checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen + 2).on_fon_active();
+	//								x_queen = x_queen - 2;
+	//								y_queen = y_queen + 2;
+	//								must_eat++;
+	//								can_eat[1] = 1;
+	//							}
+	//							else break;
+	//						}
+	//						else break;
+	//					}
+	//				}
+	//				else {
+	//					checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).on_fon_active();
+	//					x_queen = x_queen - 1;
+	//					y_queen = y_queen + 1;
+	//				}
+	//			}
+	//			else break;
+	//		}
+	//	}
+	//	if (can_eat[2]) {
+	//		can_eat[2] = 0;
+	//		x_queen = x;
+	//		y_queen = y;
+	//		while (1) {
+	//			if (end_board(x_queen + 1, y_queen - 1)) {
+	//				if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_free() == 1) {
+	//					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_checker_color() == color) {
+	//						break;
+	//					}
+	//					else if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_checker_color() != color) {
+	//						if (end_board(x_queen + 2, y_queen - 2)) {
+	//							if (checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen - 2).get_free() == 0) {
+	//								checkers_on_board.get_board().get_all_squares(x_queen + 2, y_queen - 2).on_fon_active();
+	//								x_queen = x_queen + 2;
+	//								y_queen = y_queen - 2;
+	//								must_eat++;
+	//								can_eat[2] = 1;
+	//							}
+	//							else break;
+	//						}
+	//						else break;
+	//					}
+	//				}
+	//				else {
+	//					checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).on_fon_active();
+	//					x_queen = x_queen + 1;
+	//					y_queen = y_queen - 1;
+	//				}
+	//			}
+	//			else break;
+	//		}
+	//	}
+	//	if (can_eat[3]) {
+	//		can_eat[3] = 0;
+	//		x_queen = x;
+	//		y_queen = y;
+	//		while (1) {
+	//			if (end_board(x_queen - 1, y_queen - 1)) {
+	//				if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_free() == 1) {
+	//					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_checker_color() == color) {
+	//						break;
+	//					}
+	//					else if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).get_checker_color() != color) {
+	//						if (end_board(x_queen - 2, y_queen - 2)) {
+	//							if (checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen - 2).get_free() == 0) {
+	//								checkers_on_board.get_board().get_all_squares(x_queen - 2, y_queen - 2).on_fon_active();
+	//								x_queen = x_queen - 2;
+	//								y_queen = y_queen - 2;
+	//								must_eat++;
+	//								can_eat[3] = 1;
+	//							}
+	//							else break;
+	//						}
+	//						else break;
+	//					}
+	//				}
+	//				else {
+	//					checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen - 1).on_fon_active();
+	//					x_queen = x_queen - 1;
+	//					y_queen = y_queen - 1;
+	//				}
+	//			}
+	//			else break;
+	//		}
+	//	}
+	//	if (must_eat == 0) {
+	//		return 0;
+	//	}
+	//	else {
+	//		if (i1 == 1 && i2 == 1 && i3 == 1 && i4 == 1) {
+	//			queen_square_for_move(color, can_eat[0], can_eat[1], can_eat[2], can_eat[3]);
+	//		}
+	//		else return 1;
+	//	}
+	//}
+	//bool queen_eat_checker() { // дамка рубит шашку
+	//	int x_eat = 0;
+	//	int y_eat = 0;
+	//	if ((centre_on_square().x - 87) / 80 - x >= 2 && (centre_on_square().y - 87) / 80 - y >= 2) {
+	//		int i = x;
+	//		int j = y;
+	//		while (1) {
+	//			if (i < (centre_on_square().x - 87) / 80 - 1 && j < (centre_on_square().y - 87) / 80 - 1) {
+	//				if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_free() == 1) {
+	//					x_eat = i + 1;
+	//					y_eat = j + 1;
+	//					break;
+	//				}
+	//				else {
+	//					i++;
+	//					j++;
+	//				}
+	//			}
+	//			else break;
+	//		}
+	//	}
+	//	if ((centre_on_square().x - 87) / 80 - x >= 2 && y - (centre_on_square().y - 87) / 80 >= 2) {
+	//		int i = x;
+	//		int j = y;
+	//		while (1) {
+	//			if (i < (centre_on_square().x - 87) / 80 - 1 && j >(centre_on_square().y - 87) / 80 + 1) {
+	//				if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_free() == 1) {
+	//					x_eat = i + 1;
+	//					y_eat = j - 1;
+	//					break;
+	//				}
+	//				else {
+	//					i++;
+	//					j--;
+	//				}
+	//			}
+	//			else break;
+	//		}
+	//	}
+	//	if (x - (centre_on_square().x - 87) / 80 >= 2 && (centre_on_square().y - 87) - y / 80 >= 2) {
+	//		int i = x;
+	//		int j = y;
+	//		while (1) {
+	//			if (i > (centre_on_square().x - 87) / 80 + 1 && j < (centre_on_square().y - 87) / 80 - 1) {
+	//				if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_free() == 1) {
+	//					x_eat = i - 1;
+	//					y_eat = j + 1;
+	//					break;
+	//				}
+	//				else {
+	//					i--;
+	//					j++;
+	//				}
+	//			}
+	//			else break;
+	//		}
+	//	}
+	//	if (x - (centre_on_square().x - 87) / 80 >= 2 && y - (centre_on_square().y - 87) / 80 >= 2) {
+	//		int i = x;
+	//		int j = y;
+	//		while (1) {
+	//			if (i > (centre_on_square().x - 87) / 80 + 1 && j > (centre_on_square().y - 87) / 80 + 1) {
+	//				if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_free() == 1) {
+	//					x_eat = i - 1;
+	//					y_eat = j - 1;
+	//					break;
+	//				}
+	//				else {
+	//					i--;
+	//					j--;
+	//				}
+	//			}
+	//			else break;
+	//		}
+	//	}
 
-		for (int f = 0; f < checkers_on_board.get_size(); f++) {
-			if (checkers_on_board.get_checker(f).get_x() == x_eat && checkers_on_board.get_checker(f).get_y() == y_eat) {
-				checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(f).get_x(), checkers_on_board.get_checker(f).get_y()).cell_free_0();
+	//	for (int f = 0; f < checkers_on_board.get_size(); f++) {
+	//		if (checkers_on_board.get_checker(f).get_x() == x_eat && checkers_on_board.get_checker(f).get_y() == y_eat) {
+	//			checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(f).get_x(), checkers_on_board.get_checker(f).get_y()).cell_free_0();
 
-				for (int c = f; c < checkers_on_board.get_size() - 1; c++) {
-					checkers_on_board.get_checker(c) = checkers_on_board.get_checker(c + 1);
-				}
-				checkers_on_board.delete_checker();
-				if (f < checker_num) {
-					checker_num = checker_num - 1;
-				}
-				return 1;
-			}
-		}
-		return 0;
-	}
+	//			for (int c = f; c < checkers_on_board.get_size() - 1; c++) {
+	//				checkers_on_board.get_checker(c) = checkers_on_board.get_checker(c + 1);
+	//			}
+	//			checkers_on_board.delete_checker();
+	//			if (f < checker_num) {
+	//				checker_num = checker_num - 1;
+	//			}
+	//			return 1;
+	//		}
+	//	}
+	//	return 0;
+	//}
 
 	bool end_board(float x, float y) { // проверка выходы за пределы поля
 		if (x >= 0 && x < 8 && y >= 0 && y < 8) {
@@ -486,20 +486,20 @@ public:
 		}
 		for (int i = 0; i < checkers_on_board.get_size(); i++) {
 			if (checkers_on_board.get_checker(i).get_color() == color) {
-				if (checkers_on_board.get_checker(i).check_superior() == 0) {  // проверка на дамку
+				//if (checkers_on_board.get_checker(i).check_superior() == 0) {  // проверка на дамку
 					x = checkers_on_board.get_checker(i).get_x();
 					y = checkers_on_board.get_checker(i).get_y();
 					if (!chance_eat_checker(color)) {
 						eat_checkers.push_back(i);
 					}
-				}
-				if (checkers_on_board.get_checker(i).check_superior() == 1) { // проверка на дамку
-					x = checkers_on_board.get_checker(i).get_x();
-					y = checkers_on_board.get_checker(i).get_y();
-					if (queen_square_for_move(color, 1, 1, 1, 1)) {
-						eat_checkers.push_back(i);
-					}
-				}
+				//}
+				//if (checkers_on_board.get_checker(i).check_superior() == 1) { // проверка на дамку
+				//	x = checkers_on_board.get_checker(i).get_x();
+				//	y = checkers_on_board.get_checker(i).get_y();
+				//	if (queen_square_for_move(color, 1, 1, 1, 1)) {
+				//		eat_checkers.push_back(i);
+				//	}
+				//}
 			}
 		}
 		checkers_on_board.delete_backlight();
